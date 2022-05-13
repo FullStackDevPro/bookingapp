@@ -1,0 +1,73 @@
+// import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Card from '@material-ui/core/Card';
+
+// import CardContent from '@material-ui/core/CardContent';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import Typography from '@material-ui/core/Typography';
+// import { Collapse } from '@material-ui/core';
+// import eaysImage from "../assets/m.jpg"
+// import Login from "../components/Login"
+
+
+// const useStyles = makeStyles({
+//   root: {
+//     // maxWidth: 645,
+//     background: 'rgba(0,0,0,0.5)',
+//     margin: '20px',
+//     alignItems: 'center',
+    
+//   },
+//   media: {
+//     height: 440,
+//   },
+//   title: {
+//     fontFamily: 'Nunito',
+//     fontWeight: 'bold',
+//     fontSize: '2rem',
+//     color: '#fff',
+//   },
+//   desc: {
+//     fontFamily: 'Nunito',
+//     fontSize: '1.1rem',
+//     color: '#ddd',
+//   },
+//   goDown: {
+//     color: '#5AFF3D',
+//     fontSize: '5rem',
+//   },
+
+// });
+
+// export default function CardAbout({ place}) {
+//   const classes = useStyles();
+
+//   return (
+    
+//       <Card className={classes.root}>
+//         <CardMedia
+//           className={classes.media}
+//           title="Contemplative Reptile"
+//         />
+//         <CardContent>
+//           <Typography
+//             gutterBottom
+//             variant="h5"
+//             component="h1"
+//             className={classes.title}
+//           >
+//             {place.title}
+//           </Typography>
+//           <Typography
+//             variant="body2"
+//             color="textSecondary"
+//             component="p"
+//             className={classes.desc}
+//           >
+//             {place.description}
+//           </Typography>
+//         </CardContent>
+//       </Card>
+    
+//   );
+// }
