@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  .main {
+    display: flex;
+    height: 100vh;
+  }
+  .leftside {
+    background: darkgrey;
+  }
+  .rightside {
+  }
+  .leftside ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .leftside ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  .leftside ul li {
+    padding: 5px 10px;
+    background: black;
+    margin: 1px 0px;
+  }
+  .leftside ul li:hover {
+    background: darkcyan;
+    color: white;
+  }
