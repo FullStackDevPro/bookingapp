@@ -30,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
       },
       appbarTitle: {
         flexGrow: '1',
-        color:"black",
+        color:"green",
+        // color:"black",
         fontSize: '4rem',
         fontFamily: 'Nunito',
         fontWeight: 'bold',
@@ -86,13 +87,13 @@ export default function Header(){
 
             <Collapse 
             in={checked}
-            {...(checked ? {timeout:7000} : {})}
+            {...(checked ? {timeout:4000} : {})}
             // collapsedSize={0}
             >
             <div className={classes.container}>
                 {/* <h1 className={classes.title}>Welcome to <br/> Eyes <span className={classes.colorText}>Examination Centre</span> </h1> */}
                 <h1 className={classes.title}>Book <br/> an <span className={classes.colorText}>appointment</span> </h1>
-                <Scroll to = "appointment" smooth={true}>
+                <Scroll to = "signIn/signUp" smooth={true}>
 
                 {/* Arrow button  */}
                 <IconButton >

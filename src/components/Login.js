@@ -156,14 +156,15 @@ class Form extends React.Component {
               <input placeholder="Email" type="text"  value={this.state.email} onChange = {this.getUserEmail.bind(this)}/>
               <input placeholder="Password" type="password"  value={this.state.passWord} onChange={this.getUserPassword.bind(this)}/>
               {this.state.form === 'login' ? '': <input placeholder="Name" type="text"  value={this.state.nameOfUser} onChange={this.getUserName.bind(this)}/>}
-              <button className="button-primary">Submit</button>
+              {/* <button className="button-primary">Submit</button> */}
+              {this.state.form === 'login' ? <button className="button-primary">Log In</button> : <button className="button-primary">Sign Up</button> }
             </form>
           </div>
-          <div style={{transform: `translate(${this.state.form === 'login' ? 0 : -250}px, 0px)`}} className="button-div">
-            <p>{this.state.form === 'login' ? 'Do not have an account?' : 'Already a member?'}</p>
+          <div style={{transform: `translate(${this.state.form === 'login' ? 0 : -400}px, 0px)`}} className="button-div">
+            <p className="buttonText">{this.state.form === 'login' ? 'Do not have an account?' : 'Already a member?'}</p>
             <button onClick={() => {this.setState({form: this.toggle[this.state.form]})}}>{this.toggle[this.state.form]}</button>
           </div>
-          <ToastContainer />
+          <ToastContainer style={{fontSize :"12px"}} />
         </div>
       );
     }

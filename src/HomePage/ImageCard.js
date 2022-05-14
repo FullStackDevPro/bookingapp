@@ -19,18 +19,21 @@ const useStyles = makeStyles({
     margin: '20px',
   },
   media: {
-    height: 100,
+    height: 40,
   },
   title: {
     fontFamily: 'Nunito',
     fontWeight: 'bold',
     fontSize: '5rem',
-    color: 'green',
+    color: 'black',
+    borderBottom:"1px solid white"
   },
   desc: {
     fontFamily: 'Nunito',
     fontSize: '2.1rem',
-    color: 'rgba(0,0,0,0.5)',
+    // color: 'rgba(0,0,0,0.5)',
+    color : "wheat",
+    fontWeight: 'bold',
   },
   container: {
     textAlign: 'center',
@@ -48,13 +51,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImageCard({ place, checked }) {
+export default function ImageCard({ info, checked }) {
   const classes = useStyles();
 
   return (
     <Collapse in={checked} {...(checked ? { timeout: 9000 } : {})}>
-      
       <Card className={classes.root}>
+        
         <CardMedia
           className={classes.media}
           // image={eaysImage}
@@ -67,7 +70,7 @@ export default function ImageCard({ place, checked }) {
             component="h1"
             className={classes.title}
           >
-            {place.name}
+            {info.name}
           </Typography>
           <Typography
             variant="body2"
@@ -75,7 +78,7 @@ export default function ImageCard({ place, checked }) {
             component="p"
             className={classes.desc}
           >
-            {place.description}
+            {info.description}
           </Typography>
         </CardContent>
       </Card>

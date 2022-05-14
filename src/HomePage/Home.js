@@ -3,11 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { CssBaseline } from "@material-ui/core";
 import eaysImage from "../assets/pexels-shane-aldendorff-1493112.jpg"
 import Header from "./Header"
-import PlaceTovisit from "./PlaceToVisit"
+import ShowAboutPage from "./ShowAbout"
 import Booking from "../components/Booking";
-import About from "./Form"
-import MyPage from "../userPage/MyPage"
+import Login_signUp from "./Form"
+import MyPage from "../userPage/UserPage"
 import ContactUs from "../userPage/ContactForm";
+import Login from "../components/Login"
 
 
 
@@ -26,16 +27,16 @@ export default function Home(){
     return ( 
         //< className={classes.root}>
     <div>
-        {/* <CssBaseline/> */}
-        {/* <Header/> */}
-        {/* <About/> */}
-        {/* <PlaceTovisit/> */}
+        <CssBaseline/>
+        <Header/>
+        <Login_signUp/>
+        <ShowAboutPage/>
         {/* <Login/>
         <Booking/> */}
         {/* <Booking/> */}
-        <MyPage user = {"Malek"}/>
+        {/* <MyPage user = {"Malek"}/> */}
         {/* <ContactUs/> */}
-        
+        {/* <Login/> */}
     </div>
 
 )    

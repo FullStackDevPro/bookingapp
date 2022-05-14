@@ -54,7 +54,7 @@ class showBookingUser extends Component {
         return(
             <div >
                 {loading || !tableData ? (
-                    <div><h1 className="NoAppointment">No Appointments to show, click on menu then book to book an ppointment</h1></div>
+                    <div><h1 className="NoAppointment">No Appointments to show, click on menu to book an ppointment</h1></div>
                 ) : ( 
                     <div>
                         <h1 className="NoAppointment">Your Appointment </h1>

@@ -6,7 +6,7 @@ import SortIcon from "@material-ui/icons/Sort"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import {Link as Scroll} from "react-scroll";
 import eaysImage from "../assets/3.png"
-import Places from "./Places.js"
+import Places from "./Info.js"
 import useWindowPositio from "../hook/useWindowPosition"
 import Login from "../components/Login"
 
@@ -70,7 +70,7 @@ export default function appointment(){
     // },[])
     return (
       <div>
-        <div className={classes.root} id = "appointment">  
+        <div className={classes.root} id = "signIn/signUp">  
             {/* <AppBar className={classes.appbar} elevation = {10}> */}
                 <Toolbar className={classes.appbarWrapper}>
                 <h1 className={classes.appbarTitle}> Please <span className={classes.colorText}>Log In or Sign Up</span> to be able <span className={classes.colorText}>to book an appointment</span></h1>
