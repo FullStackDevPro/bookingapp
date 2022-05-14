@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+* {
+    box-sizing: border-box;
+
+}
+
+body{
+    background-color: white;
+    
+}
+
+body>div{
+    min-height: 20vh;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.table_responsive {
+    max-width: 900px;
+
+    /* border: 10px solid white; 
+    background-color: #efefef33;
+    padding: 15px; 
+    overflow: auto; */
+
+    margin: auto;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    font-size: 13px;
+    color: #444;
+    white-space: nowrap;
+    border-collapse: collapse;
+}
+.NoAppointment{
+    font-weight: bold;
+    color: wheat;
+    font-size: 25px;
+    
+}
+.center {
+    /* background-image: url("../image/pexels-shane-aldendorff-1493112_11zon.jpeg"); */
+    background-color: rgba(0, 0,0, 0.4);
+    height: 72vh;
+    /* text-align: center; */
+    /* align-items: center; */
+    border-radius: 50px;
+    width: 100%;
+    padding: 50px;
+    /* max-width: 800px; */
+    
+}
+
+thead {
+    background-color:#26a69a;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    
+}
+
+thead th {
+    padding: 15px;
+}
+
+table th{
+    border: 1px solid #00000017;
+    padding: 10px 15px;
+    
+}
+table td {
+    border: 1px solid #00000017;
+    padding: 10px 15px; 
+    background-color: ghostwhite; 
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    background-color: rgba(0, 0,0, 0.4);  
+    
+}
+
+/* table>tbody>tr>td>img {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #26a69a;
+    box-shadow: 0 2px 6px #0003;
+} */
+
+
+.action_btn {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.action_btn>a {
+    text-decoration: none;
+    color: #444;
+    background: #fff;
+    border: 1px solid;
+    display: inline-block;
+    padding: 7px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.action_btn>a:nth-child(1) {
+    border-color: #26a69a;
+}
+
+.action_btn>a:nth-child(2) {
+    border-color:#26a69a;
+}
+
+/* .action_btn>a:hover {
+    box-shadow: 0 3px 8px #0003;
+} */
+
+
+table>tbody>tr {
+    background-color:white;
+    transition: 0.3s ease-in-out;
+
+}
+
+/* table>tbody>tr:hover {
+    transform: scale(1.4);
+} */
+
+/* table>tbody>tr:hover {
+    background-color: wheat;
+}  */
+td:hover{
+    background-color: wheat;
+}
+
+/* thead:hover{
+    transform: scale(1.4);
+    transition: 0.3s ease-in-out;
+} */
+
+
+.callout {
+    position:fixed;
+    bottom: 35px;
+    right: 20px;
+    margin-left: 20px;
+    /* max-width: 500px; */
+    width: 420px;
+    display: none;
+ 
+}
+  
+.callout-header {
+    padding: 25px 15px;
+    background: #26a69a;
+    font-size: 30px;
+    color: black;
+}
+  
+.callout-container {
+    padding: 15px;
+    background-color: white;
+    color: black
+}
+
+.callout-container2{
+    padding: 15px;
+    background-color: white;
+    color: black
+}
+  
+.closebtn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+.callout2 {
+    position:fixed;
+    bottom: 35px;
+    right: 20px;
+    margin-left: 20px;
+    /* max-width: 500px; */
+    width: 420px;
+    display: none;
+ 
+}
+  
+.callout-header2 {
+    padding: 25px 15px;
+    background: #26a69a;
+    font-size: 30px;
+    color: black;
+}
+  
+.callout-container2 {
+    padding: 15px;
+    background-color: white;
+    color: black
+}
+
+.callout-container2{
+    padding: 15px;
+    background-color: white;
+    color: black
+}
+  
+.closebtn2 {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+.add_user{
+    background-color:  #26a69a; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+#load{
+    color: white;
+}
+.created_btn{
+    background-color: #26a69a; /* Green */
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.created_btn:hover{
+    background-color:white;
+}
+
+
+
+.T-title{
+    color: white;
+}

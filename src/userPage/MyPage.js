@@ -19,6 +19,7 @@ import { hover } from 'glamor';
 // import Option from "./Options"
 import Login from "../components/Login"
 import ContactUs from "./ContactForm"
+import ToShowUserBooking from "./UserBooking"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -84,8 +85,11 @@ const useStyles = makeStyles((theme) => ({
       },
       colorTextMenu:{
         color: 'black',
-        fontSize: '1rem',
+        fontSize: '2rem',
         fontWeight: 'bold',
+        '&:hover': {
+          color: "white",
+       },
       }
   }));
 
@@ -93,33 +97,58 @@ const useStyles = makeStyles((theme) => ({
 export default function Header({user}){
     const classes = useStyles();
     const [checked,setChecked] = useState(false);
-    const [testLogin,setTestLogin] = useState(false);
-    const [testBooking,setTestBookin] = useState(false);
+    const [contactForm,setcontactForm] = useState(null);
+    const [booking,setBooking] = useState(null);
+    const [showBooking,setShowBookin] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(null);
     
     useEffect(()=> {
         setChecked(true)
+        
     },[])
 
     const handleClose = (e) => {
-      console.log(e.target.innerText)
-      if(e.target.innerText == "Contact Us"){
-        setTestBookin(true)
-        setTestLogin(true)
+      setSelectedItem(e.target.innerText)
+      if(e.target.innerText == "Your Booking"){
+        setcontactForm(true)
+        setShowBookin(false)
+        setBooking(true)
+      }else if(e.target.innerText == "Book"){
+          setcontactForm(true)
+          setShowBookin(true)
+          setBooking(false)
+      }else if(e.target.innerText == "Contact Us"){
+          setcontactForm(false)
+          setShowBookin(true)
+          setBooking(true)
       }else{
-        setTestBookin(false)
-        setTestLogin(false)
+        setSelectedItem(null)
       }
+
+      console.log("Sellected Value : ",e.target.innerText)
+      console.log("booking : ",booking,"show booking : ",showBooking,"contact Form :",contactForm)
+
       setAnchorEl(null);
     };
+
+    // const handleClose = (e) => {
+    //   setSelectedItem(e.target.innerText)
+    //   console.log(selectedItem)
+    //   console.log(booking,showBooking,contactForm)
+    //   if(e.target.innerText == "Contact Us"){
+    //     setBooking(true)
+    //     setcontactForm(true)
+    //   }else{
+    //     setBooking(false)
+    //     setcontactForm(false) 
+    //   }
+    //   setAnchorEl(null);
+    // };
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
-
-    let buttonOnClick = ()=> {
-      setTestLogin(true)
-    }
     return (
         <Collapse 
         in={checked}
@@ -144,7 +173,7 @@ export default function Header({user}){
                     backgroundColor:"wheat",
                     margin:"60px" ,
                     color: 'black',
-                    fontSize: '4rem',
+                    fontSize: '5rem',
                     fontFamily: 'Nunito',
                     fontWeight: 'bold',
                     cursor: 'pointer',
@@ -159,7 +188,7 @@ export default function Header({user}){
                 onClose={handleClose}
                 open={Boolean(anchorEl)}
                 >
-                  <MenuItem data onClick={handleClose} className={classes.colorTextMenu}> <CalendarMonthIcon className={classes.icon2}/>Book</MenuItem>
+                  <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <CalendarMonthIcon className={classes.icon2}/>Book</MenuItem>
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <CallIcon className={classes.icon2}/> Contact Us </MenuItem>
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VisibilityIcon className={classes.icon2}/> Your Booking</MenuItem>
                 </Menu>
@@ -173,9 +202,15 @@ export default function Header({user}){
             </AppBar>
 
             <div className={classes.container}>
-                {testBooking ? <ContactUs/> : <Booking/> }
+              {showBooking == false ? <ToShowUserBooking/> : null}
+              {booking == false ? <Booking/> : null}
+              {contactForm == false ? <ContactUs/> : null}
+                {/* {selectedItem == "Book" ? <Booking/> : null} */}
+                {/* {showBooking == false ? <ToShowUserBooking/> : null } */}
+                {/* {booking ? <ContactUs/> : <Booking/> } */}
                 {/* {testLogin ? <Login/> : null} */}
-                  
+                
+  
             </div>
             
         </div>

@@ -7,7 +7,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import {Link as Scroll} from "react-scroll";
 import eaysImage from "../assets/3.png"
 import Places from "./Places.js"
-import CardAbout from "./CardAbout"
 import useWindowPositio from "../hook/useWindowPosition"
 import Login from "../components/Login"
 
