@@ -33,7 +33,7 @@ class Booking extends Component{
     }
 
     componentDidMount() {
-        // remaning months of selected year
+        // remaining months of selected year
         const dateForRemaining  = new Date();
         const rest = this.state.months.slice(dateForRemaining.getMonth())
         let list = []
@@ -252,7 +252,7 @@ class Booking extends Component{
                         <br>
                         </br>
                        <button class="button-86" role="button" onClick={this.postNew}>Book</button>
-                       <ToastContainer />
+                       <ToastContainer  style={{fontSize : "15px"}}/>
                     {/* </section> */}
                 {/* </body> */}
                 </div>

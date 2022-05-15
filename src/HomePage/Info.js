@@ -1,33 +1,25 @@
-const places = [
+const descriptionAboutUs = [
     {
       name: 'Malek ',
       description:
-        "Designed all pages, created booking system, contact form , show user's booking ",
-      // imageUrl: process.env.PUBLIC_URL + '/assets/island1.jpg',
-      time: 1500,
+        "Designed pages, created booking system, contact form , show menu of options to user , deploying, Back-end ",
     },
     {
       name: 'Mohammad',
       description:
-        "Designed all pages, created booking system, contact form , show user's booking.",
-      // imageUrl: process.env.PUBLIC_URL + '/assets/island2.jpg',
-      time: 1500,
+        "Back-end, connection to database, create booking table, users table. ",
     },
     {
       name: 'Islam',
       description:
-        "Designed all pages, created booking system, contact form , show user's booking.",
-      // imageUrl: process.env.PUBLIC_URL + '/assets/island2.jpg',
-      time: 1500,
+        "LogIn form, Register Form , data validation, Home page ",
     },
     
     {
       name: 'Ismail',
       description:
-        "Designed all pages, created booking system, contact form , show user's booking.",
-      // imageUrl: process.env.PUBLIC_URL + '/assets/island2.jpg',
-      time: 1500,
+        "Home Page, styling of showing About us page, adding features, back-end",
     },
   ];
   
-  export default places;
+  export default descriptionAboutUs;

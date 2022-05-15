@@ -132,20 +132,6 @@ export default function Header({user}){
       setAnchorEl(null);
     };
 
-    // const handleClose = (e) => {
-    //   setSelectedItem(e.target.innerText)
-    //   console.log(selectedItem)
-    //   console.log(booking,showBooking,contactForm)
-    //   if(e.target.innerText == "Contact Us"){
-    //     setBooking(true)
-    //     setcontactForm(true)
-    //   }else{
-    //     setBooking(false)
-    //     setcontactForm(false) 
-    //   }
-    //   setAnchorEl(null);
-    // };
-
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -205,14 +191,8 @@ export default function Header({user}){
               {showBooking == false ? <ToShowUserBooking/> : null}
               {booking == false ? <Booking/> : null}
               {contactForm == false ? <ContactUs/> : null}
-                {/* {selectedItem == "Book" ? <Booking/> : null} */}
-                {/* {showBooking == false ? <ToShowUserBooking/> : null } */}
                 {/* {booking ? <ContactUs/> : <Booking/> } */}
-                {/* {testLogin ? <Login/> : null} */}
-                
-  
             </div>
-            
         </div>
         </Collapse>
     )

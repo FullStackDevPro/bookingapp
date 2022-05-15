@@ -1,10 +1,9 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import ImageCard from "./ImageCard"
+import ImageCard from "./AboutUs"
 import Information from "./Info.js"
 import useWindowPositio from "../hook/useWindowPosition"
 import eaysImage from "../assets/111.jpg"
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,7 +25,6 @@ export default function ShowAbout(){
     const checked = useWindowPositio("header");
     return(  
         <div className={classes.root} id="show-about">
-            
             <ImageCard info={Information[0]} checked={checked}/>
             <ImageCard info={Information[1]} checked={checked}/>
             <ImageCard info={Information[2]} checked={checked}/>

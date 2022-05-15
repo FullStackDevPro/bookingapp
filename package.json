@@ -9,7 +9,7 @@
     "webStart": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
-  "author": "Malek, Mohammad , James , Islam , Ismail ",
+  "author": "Malek, Mohammad , Islam , Ismail ",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",

@@ -164,7 +164,7 @@ class Form extends React.Component {
             <p className="buttonText">{this.state.form === 'login' ? 'Do not have an account?' : 'Already a member?'}</p>
             <button onClick={() => {this.setState({form: this.toggle[this.state.form]})}}>{this.toggle[this.state.form]}</button>
           </div>
-          <ToastContainer style={{fontSize :"12px"}} />
+          <ToastContainer style={{fontSize :"15px"}} />
         </div>
       );
     }

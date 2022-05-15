@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
-// import SortIcon from '@mui/icons-material/Sort';
 import SortIcon from "@material-ui/icons/Sort"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
@@ -79,9 +78,12 @@ export default function Header(){
                 <Toolbar className={classes.appbarWrapper}>
                 <h1 className={classes.appbarTitle}> My <span className={classes.colorText}>Eyes</span></h1>
                 <h2 className={classes.appbarTitle}>Welcome to Eyes <span className={classes.colorText}>Examination Centre</span> </h2>
+                <Scroll to = "signIn/signUp" smooth={true}>
                 <IconButton>
+                    <h1>My page</h1>
                     <LockOutlinedIcon className={classes.icon} />
                 </IconButton>
+                </Scroll>
                 </Toolbar>
             </AppBar>
 
