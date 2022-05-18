@@ -5,7 +5,7 @@ import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
 import SortIcon from "@material-ui/icons/Sort"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import {Link as Scroll} from "react-scroll";
-import eaysImage from "../assets/3.png"
+import eaysImage from "../assets/pexels-dids-1499477.jpg"
 import Places from "./Info.js"
 import useWindowPositio from "../hook/useWindowPosition"
 import Login from "../components/Login"
@@ -39,7 +39,10 @@ const useStyles = makeStyles((theme) => ({
         
       },
       colorText: {
-        color: '#5AFF3D',
+        color: 'white',
+        fontSize : "30px",
+       
+        
       },
       container: {
         textAlign: 'center',
@@ -62,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
       },
   }))
 
-export default function appointment(){
+export default function appointment({state}){
     const classes = useStyles();
     const [checked,setChecked] = useState(false);
     useEffect(()=> {
@@ -70,9 +73,9 @@ export default function appointment(){
     },[])
     return (
       <div>
-        <div className={classes.root} id = "signIn/signUp">  
+        <div className={classes.root} id = "signIn/signUp">
+        <h1 className={classes.appbarTitle}> Please <span className={classes.colorText}>Log In or Sign Up</span> to be able <span className={classes.colorText}>to book an appointment</span></h1>
                 <Toolbar className={classes.appbarWrapper}>
-                <h1 className={classes.appbarTitle}> Please <span className={classes.colorText}>Log In or Sign Up</span> to be able <span className={classes.colorText}>to book an appointment</span></h1>
                   <Login/>
                 </Toolbar>
         </div> 

@@ -4,8 +4,17 @@ import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
 import SortIcon from "@material-ui/icons/Sort"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import GroupsIcon from "@material-ui/icons/PeopleOutline"
+import HomeIcon from "@material-ui/icons/Home";
 import {Link as Scroll} from "react-scroll";
-import eaysImage from "../assets/pexels-shane-aldendorff-1493112.jpg"
+import eaysImage from "../assets/glass5.jpg"
+import LogInPage from "./Form"
+import ShowAboutPage from "./ShowAbout"
+import "../style/TextAnimation.css"
+import About2 from "./About2"
+import FooterPart from "./Footer"
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,20 +33,23 @@ const useStyles = makeStyles((theme) => ({
         background: 'none',
       },
       appbarWrapper: {
-        width: '80%',
+        width: '100%',
         margin: '0 auto',
       },
       appbarTitle: {
         flexGrow: '1',
-        color:"green",
+        color:" lightgrey",
         // color:"black",
-        fontSize: '4rem',
+        fontSize: '3rem',
         fontFamily: 'Nunito',
         fontWeight: 'bold',
       },
       icon: {
-        color: 'green',
+        color: ' lightgrey',
         fontSize: '4rem',
+        '&:hover': {
+          color: "black",
+         },
         
       },
       colorText: {
@@ -61,29 +73,70 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
-export default function Header(){
+export default function Header({state}){
     const classes = useStyles();
     const [checked,setChecked] = useState(false);
     useEffect(()=> {
         setChecked(true)
     },[])
+
+    const TextShow = ()=>{
+      return (
+        <section class="rw-wrapper">
+
+        <div class="rw-words rw-words-1">
+          <span>breathtaking moments</span>
+          <span>lovely sounds</span>
+          <span>incredible magic</span>
+          <span>unseen experiences</span>
+          <span>happy feelings</span>
+          <span>beautiful butterflies</span>
+        </div>
+        </section>
+      )
+    }
+
     return (
+      <div>
         <Collapse 
         in={checked}
         {...(checked ? {timeout:2000} : {})}
         // collapsedSize={0}
         >
         <div className={classes.root} id = "header">
-            <AppBar className={classes.appbar} elevation = {10}>
+            <AppBar className={classes.appbar} elevation = {15}>
                 <Toolbar className={classes.appbarWrapper}>
                 <h1 className={classes.appbarTitle}> My <span className={classes.colorText}>Eyes</span></h1>
-                <h2 className={classes.appbarTitle}>Welcome to Eyes <span className={classes.colorText}>Examination Centre</span> </h2>
-                <Scroll to = "signIn/signUp" smooth={true}>
-                <IconButton>
-                    <h1>My page</h1>
-                    <LockOutlinedIcon className={classes.icon} />
+                <h1 className={classes.appbarTitle}> Book an appointment quickly <span className={classes.colorText}>& </span> easily online</h1>
+                <Scroll to = "header" smooth={true}>
+                  <IconButton>
+                    <HomeIcon className={classes.icon} />
+                    <h1>Home</h1>
                 </IconButton>
                 </Scroll>
+                
+                
+                <Scroll to = "signIn/signUp" smooth={true}>
+                  <IconButton>
+                    <LockOutlinedIcon className={classes.icon} />
+                    <h1>Log In</h1>
+                </IconButton>
+                </Scroll>
+
+                <Scroll to = "show-about" smooth={true}>
+                  <IconButton>
+                    <LockOutlinedIcon className={classes.icon} />
+                    <h1>Services</h1>
+                </IconButton>
+                </Scroll>
+
+                <Scroll to = "About-us-page" smooth={true}>
+                  <IconButton>
+                    <GroupsIcon className={classes.icon} />
+                    <h1 >About Us</h1>
+                </IconButton>
+                </Scroll>
+
                 </Toolbar>
             </AppBar>
 
@@ -93,19 +146,21 @@ export default function Header(){
             // collapsedSize={0}
             >
             <div className={classes.container}>
-                {/* <h1 className={classes.title}>Welcome to <br/> Eyes <span className={classes.colorText}>Examination Centre</span> </h1> */}
-                <h1 className={classes.title}>Book <br/> an <span className={classes.colorText}>appointment</span> </h1>
+                {/* <h2 className={classes.appbarTitle}>Welcome to Eyes <span className={classes.colorText}>Examination Centre</span> </h2>
+                <h1 className={classes.title}>Book <br/> an <span className={classes.colorText}>appointment for examination</span> </h1>
                 <Scroll to = "signIn/signUp" smooth={true}>
-
-                {/* Arrow button  */}
                 <IconButton >
                     <ExpandMoreIcon className={classes.goDown} />
                 </IconButton>
-                </Scroll>
+                </Scroll> */}
             </div>
-
             </Collapse>
         </div>
         </Collapse>
+        <LogInPage/>
+        <ShowAboutPage/>
+        <About2/>
+          <FooterPart/>
+        </div>
     )
 }

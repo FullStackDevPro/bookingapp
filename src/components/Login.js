@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "../style/LoginStyle.css" 
 import { ToastContainer, toast } from 'react-toastify';
-
+import GoToUserPage from "../userPage/UserPage"
+import HomePage from "../HomePage/Home"
+import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 
 class Form extends React.Component {
     constructor(props) {
@@ -29,6 +32,7 @@ class Form extends React.Component {
             emailStstus : false,
             passwordStstus : false,
             nameStstus : false,
+            isLogedStatus : false
             
           },
 
@@ -45,6 +49,7 @@ class Form extends React.Component {
             if(getEmailStatus == true && getPasswordStatus == true ){
                 this.setState({userEmail:this.state.email , userPassword : this.state.passWord})
                 console.log("the login form is checked " , this.state.userEmail , "password" , this.state.userPassword)
+                this.isLoged()
             }else{
                 console.log("setting value in LOGIN FORM is faild ")
             }
@@ -62,6 +67,11 @@ class Form extends React.Component {
         }
         this.emptyValue()
         e.preventDefault();
+    }
+
+    isLoged = ()=> {
+        this.setState({isLogedStatus:true})
+        console.log(this.state.isLogedStatus)
     }
 
     emptyValue = ()=> {
@@ -144,11 +154,17 @@ class Form extends React.Component {
     getUserEmail = (e)=> {
         this.setState({email:e.target.value})
     }
-    addingNewUser = ()=>{
+    singUpNewUser = ()=>{
 
     }
   
-    render() {    
+    render() {
+        let page ;
+        if(this.state.isLogedStatus){
+            return (
+                <GoToUserPage/>
+            )
+        }else{  
       return (
         <div className="container">
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : 250}px, 0px)`}} className="form-div">
@@ -167,6 +183,7 @@ class Form extends React.Component {
           <ToastContainer style={{fontSize :"15px"}} />
         </div>
       );
+    }
     }
 }
 
