@@ -9,6 +9,7 @@ body{
 width: 500px;
 margin:2em auto;
 background:white;
+/* background:rgb(0, 0, 0, 0.7); */
 position: relative;
 }
 #contact::after {
@@ -28,18 +29,18 @@ z-index: -1;
   padding: 1em;
 }
 #contact h1 {
-background: wheat;
+background: lightgray;
 font-family: Oswald ,sans-serif;
 font-size: 1.75em;
 padding: 0.6em 0 0.6em 0.4em;
-color: white;
+color: black;
 text-shadow: 0 0.06em 0 #424242;
 position: relative;
 }
 .contactbutton {
-background: wheat;
--webkit-box-shadow: 1px 1px 0 0 wheat,2px 2px 0 0 wheat,3px 3px 0 0 wheat;
-box-shadow: 1px 1px 0 0 wheat,2px 2px 0 0 wheat,3px 3px 0 0 wheat;
+background: lightgray;
+/* -webkit-box-shadow: 1px 1px 0 0 wheat,2px 2px 0 0 wheat,3px 3px 0 0 wheat; */
+/* box-shadow: 1px 1px 0 0 wheat,2px 2px 0 0 wheat,3px 3px 0 0 wheat; */
 text-align: center;
 display: block;
 width: 100%;
@@ -155,7 +156,7 @@ position: absolute;
 left: 0;
 top: 0;
 height: 100%;
-background: black;
+background: lightgray;
 color: white;
 font-family: Oswald ,sans-serif;
 box-sizing: border-box;

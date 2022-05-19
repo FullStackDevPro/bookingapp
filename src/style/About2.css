@@ -9,15 +9,16 @@
 .team-section{
     overflow: hidden;
     text-align: center;
-    background: #34495e;
+    /* background: #34495e; */
+    background-color: rgb(93,94,99);
     padding:60px;
 }
 
 .team-section h1{
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     margin-bottom: 60px;
     color: white;
-    font-size: 40px;
+    font-size: 20px;
 }
 .border{
     display: block;

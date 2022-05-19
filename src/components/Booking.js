@@ -28,7 +28,9 @@ class Booking extends Component{
             errorYear:"Please select a Year !",
             errorMonth:"Please select a Month !",
             postState : false,
-            getAppointments:[] 
+            getAppointments:[] ,
+            AppointmentType : ["Eye examination-glasses", "Eye examination - lenses","Eye health examination", "eye examination children 8-12" , "Eye examination youth 13-19", "Eye examination - driving license" , "Eye examination - First time","Terminal goggles / goggles","Examination dry eyes"],
+            selectedAppointmentType:"",
         };
     }
 
@@ -154,6 +156,10 @@ class Booking extends Component{
         this.setState({appointment: e.target.value})
     }
 
+    selectedAppointment_Type = (e)=>{
+        this.setState( {selectedAppointmentType:e.target.value})
+    }
+
     postNew = () => { 
 
         if(this.state.selectedMonth == "" ){
@@ -164,6 +170,8 @@ class Booking extends Component{
             this.errorDisplay("Please select a day !")
         }else if(this.state.appointment==""){
             this.errorDisplay("Please select an appointment !")
+        }else if(this.state.selectedAppointmentType==""){
+            this.errorDisplay("Please select a type !")
         }else{
             // uncomment when the the path to DB is done 
 
@@ -188,6 +196,7 @@ class Booking extends Component{
                 selectedMonth:"",
                 selectedDay:"",
                 appointment:"",
+                selectedAppointmentType:"",
                 month:[],
                 fullDate:[]
             })
@@ -249,10 +258,17 @@ class Booking extends Component{
                            })}
                        </select>
                        {/* </form> */}
+                       <h1>Please select a type of examination :</h1>
+                       <select className="form-control" value={this.state.selectedAppointmentType} onChange = {this.selectedAppointment_Type.bind(this)}>
+                       <option></option>
+                           {this.state.AppointmentType.map(x => {  
+                               return <option>{x}</option>
+                           })}
+                       </select>
                         <br>
                         </br>
                        <button class="button-86" role="button" onClick={this.postNew}>Book</button>
-                       <ToastContainer  style={{fontSize : "15px"}}/>
+                       <ToastContainer  style={{fontSize : "12px"}}/>
                     {/* </section> */}
                 {/* </body> */}
                 </div>

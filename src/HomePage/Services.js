@@ -47,15 +47,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function ImageCard({ info, checked }) {
+export default function Services({ info, checked }) {
   const classes = useStyles();
 
   return (
-    <Collapse in={checked} {...(checked ? { timeout: 8000 } : {})}>
+    <Collapse in={checked} {...(checked ? { timeout: 6000 } : {})}>
       <Card className={classes.root}>
-        
-        <CardMedia
-          className={classes.media}
+        <CardMedia className={classes.media}
           // image={eaysImage}
           // title="Contemplative Reptile"
         />

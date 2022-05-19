@@ -5,7 +5,7 @@ import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
 import SortIcon from "@material-ui/icons/Sort"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import {Link as Scroll} from "react-scroll";
-import eaysImage from "../assets/pexels-dids-1499477.jpg"
+import eaysImage from "../assets/glass5.jpg"
 import Places from "./Info.js"
 import useWindowPositio from "../hook/useWindowPosition"
 import Login from "../components/Login"

@@ -5,11 +5,12 @@ import SortIcon from "@material-ui/icons/Sort"
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import GroupsIcon from "@material-ui/icons/PeopleOutline"
+import FilterListIcon from '@material-ui/icons/FilterList';
 import HomeIcon from "@material-ui/icons/Home";
 import {Link as Scroll} from "react-scroll";
-import eaysImage from "../assets/glass5.jpg"
+import eaysImage from "../assets/eyeglass-colors.jpg"
 import LogInPage from "./Form"
-import ShowAboutPage from "./ShowAbout"
+import ShowServices from "./ShowServices"
 import "../style/TextAnimation.css"
 import About2 from "./About2"
 import FooterPart from "./Footer"
@@ -38,14 +39,14 @@ const useStyles = makeStyles((theme) => ({
       },
       appbarTitle: {
         flexGrow: '1',
-        color:" lightgrey",
+        color:" black",
         // color:"black",
-        fontSize: '3rem',
+        fontSize: '2rem',
         fontFamily: 'Nunito',
         fontWeight: 'bold',
       },
       icon: {
-        color: ' lightgrey',
+        color: ' lightblue',
         fontSize: '4rem',
         '&:hover': {
           color: "black",
@@ -54,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
       },
       colorText: {
         // color: '#5AFF3D',
-        color: 'black',
-        fontSize: '4rem',
+        color: 'lightblue',
+        fontSize: '5rem',
         fontFamily: 'Nunito',
         fontWeight: 'bold',
       },
@@ -71,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
         color: '#5AFF3D',
         fontSize: '5rem',
       },
+      h1Color :{
+        color : " lightblue"
+      }
   }));
 
 export default function Header({state}){
@@ -111,29 +115,28 @@ export default function Header({state}){
                 <Scroll to = "header" smooth={true}>
                   <IconButton>
                     <HomeIcon className={classes.icon} />
-                    <h1>Home</h1>
+                    <h1 className={classes.h1Color}>Home</h1>
                 </IconButton>
                 </Scroll>
-                
                 
                 <Scroll to = "signIn/signUp" smooth={true}>
                   <IconButton>
                     <LockOutlinedIcon className={classes.icon} />
-                    <h1>Log In</h1>
+                    <h1 className={classes.h1Color}>Log In</h1>
                 </IconButton>
                 </Scroll>
 
-                <Scroll to = "show-about" smooth={true}>
+                <Scroll to = "show-services" smooth={true}>
                   <IconButton>
-                    <LockOutlinedIcon className={classes.icon} />
-                    <h1>Services</h1>
+                    <FilterListIcon className={classes.icon} />
+                    <h1 className={classes.h1Color} >Services</h1>
                 </IconButton>
                 </Scroll>
 
                 <Scroll to = "About-us-page" smooth={true}>
                   <IconButton>
                     <GroupsIcon className={classes.icon} />
-                    <h1 >About Us</h1>
+                    <h1  className={classes.h1Color}>About Us</h1>
                 </IconButton>
                 </Scroll>
 
@@ -145,22 +148,22 @@ export default function Header({state}){
             {...(checked ? {timeout:4000} : {})}
             // collapsedSize={0}
             >
-            <div className={classes.container}>
-                {/* <h2 className={classes.appbarTitle}>Welcome to Eyes <span className={classes.colorText}>Examination Centre</span> </h2>
+            {/* <div className={classes.container}>
+                <h2 className={classes.appbarTitle}>Welcome to Eyes <span className={classes.colorText}>Examination Centre</span> </h2>
                 <h1 className={classes.title}>Book <br/> an <span className={classes.colorText}>appointment for examination</span> </h1>
                 <Scroll to = "signIn/signUp" smooth={true}>
                 <IconButton >
                     <ExpandMoreIcon className={classes.goDown} />
                 </IconButton>
-                </Scroll> */}
-            </div>
+                </Scroll>
+            </div> */}
             </Collapse>
         </div>
         </Collapse>
         <LogInPage/>
-        <ShowAboutPage/>
+        <ShowServices/>
         <About2/>
-          <FooterPart/>
+        <FooterPart/>
         </div>
     )
 }

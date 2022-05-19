@@ -7,7 +7,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from "@material-ui/core/MenuItem";
 import CallIcon from '@material-ui/icons/Call';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import CalendarMonthIcon from '@material-ui/icons/CalendarToday';
+import MailIcon from '@material-ui/icons/Mail';
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
@@ -41,32 +43,32 @@ const useStyles = makeStyles((theme) => ({
       },
       appbarTitle: {
         flexGrow: '1',
-        color:"black",
+        color:"white",
         fontSize: '4rem',
         fontFamily: 'Nunito',
         fontWeight: 'bold',
       },
       icon: {
-        color: 'green',
+        color: 'black',
         fontSize: '4rem',
         cursor: 'pointer',
         '&:hover': {
-          color: "wheat",
+          color: "lightblue",
        },
       },
       icon2 :{
-        color : "green",
+        color : "black",
         fontSize : '6rem',
         padding: '5px 5px 5px 5px',
         cursor: 'pointer',
         '&:hover': {
-          color: "black",
+          color: "lightblue",
        },
       },
 
       colorText: {
         // color: '#5AFF3D',
-        color: 'wheat',
+        color: 'black',
         fontSize: '4rem',
         fontFamily: 'Nunito',
         fontWeight: 'bold',
@@ -84,11 +86,11 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '5rem',
       },
       colorTextMenu:{
-        color: 'black',
+        color: 'white',
         fontSize: '2rem',
         fontWeight: 'bold',
         '&:hover': {
-          color: "white",
+          color: "lightblue",
        },
       }
   }));
@@ -100,6 +102,7 @@ export default function Header({user}){
     const [contactForm,setcontactForm] = useState(null);
     const [booking,setBooking] = useState(null);
     const [showBooking,setShowBookin] = useState(false);
+    const [changePassword,setChangePassword] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
     
@@ -112,16 +115,25 @@ export default function Header({user}){
       setSelectedItem(e.target.innerText)
       if(e.target.innerText == "Your Booking"){
         setcontactForm(true)
-        setShowBookin(false)
+        setChangePassword(true)
         setBooking(true)
+        setShowBookin(false)
+        
       }else if(e.target.innerText == "Book"){
           setcontactForm(true)
           setShowBookin(true)
+          setChangePassword(true)
           setBooking(false)
       }else if(e.target.innerText == "Contact Us"){
-          setcontactForm(false)
           setShowBookin(true)
           setBooking(true)
+          setChangePassword(true)
+          setcontactForm(false)
+      }else if(e.target.innerText=="Change password"){
+          setShowBookin(true)
+          setBooking(true)
+          setcontactForm(true)
+          setChangePassword(false)
       }else{
         setSelectedItem(null)
       }
@@ -147,16 +159,16 @@ export default function Header({user}){
                 <h1 className={classes.appbarTitle}> My <span className={classes.colorText}>Eyes</span></h1>
                 <h2 className={classes.appbarTitle}><span className={classes.colorText}>Welcome {user} </span></h2>
                 <IconButton title='Menu'  aria-controls='Menu' aria-haspopup ="true" onClick={handleClick}>
-                    <h1>Menu</h1>
                     <MenuIcon  className={classes.icon} />
+                    <h1>Menu</h1>
                 </IconButton>
                 <Menu 
                 PaperProps={{  
                   style: {  
                     width: 300,
-                    height:250, 
+                    height:315, 
                     borderradius:"30px" ,
-                    backgroundColor:"wheat",
+                    backgroundColor:"rgba(0, 0,0, 0.7)",
                     margin:"60px" ,
                     color: 'black',
                     fontSize: '5rem',
@@ -175,13 +187,14 @@ export default function Header({user}){
                 open={Boolean(anchorEl)}
                 >
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <CalendarMonthIcon className={classes.icon2}/>Book</MenuItem>
-                  <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <CallIcon className={classes.icon2}/> Contact Us </MenuItem>
+                  <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <MailIcon className={classes.icon2}/> Contact Us </MenuItem>
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VisibilityIcon className={classes.icon2}/> Your Booking</MenuItem>
+                  <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VpnKeyIcon className={classes.icon2}/> Change password</MenuItem>
                 </Menu>
 
                 <IconButton  title='LogOut'>
-                  <h1 >Log Out</h1>
                     <LockOpenOutlinedIcon  className={classes.icon2} />
+                    <h1 >Log Out</h1>
                 </IconButton>
                 
                 </Toolbar>
@@ -191,6 +204,7 @@ export default function Header({user}){
               {showBooking == false ? <ToShowUserBooking/> : null}
               {booking == false ? <Booking/> : null}
               {contactForm == false ? <ContactUs/> : null}
+              {changePassword==false ? <ContactUs/> : null}
                 {/* {booking ? <ContactUs/> : <Booking/> } */}
             </div>
         </div>

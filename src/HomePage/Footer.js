@@ -40,7 +40,7 @@ export default function Footer(){
 		<div>
 				<section>
 				<h1>My Eyes</h1>
-				<h3>Hover over the circle below to get info you need</h3>
+				<h3 > Please hover over the circle below to get info you need</h3>
 				</section>
 				<div className="footer">
 				<div id="button">
