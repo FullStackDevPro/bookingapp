@@ -204,7 +204,7 @@ export default function Header({user}){
               {showBooking == false ? <ToShowUserBooking/> : null}
               {booking == false ? <Booking/> : null}
               {contactForm == false ? <ContactUs/> : null}
-              {changePassword==false ? <ContactUs/> : null}
+              {/* {changePassword==false ? <ContactUs/> : null} */}
                 {/* {booking ? <ContactUs/> : <Booking/> } */}
             </div>
         </div>

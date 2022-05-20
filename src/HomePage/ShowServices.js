@@ -32,7 +32,7 @@ export default function ShowServices({state}){
             <Service info={Information[1]} checked={checked}/>
             <Service info={Information[2]} checked={checked}/>
             <Service info={Information[3]} checked={checked}/> */}
-            <Collapse in={checked} {...(checked ? { timeout: 6000 } : {})}>
+            <Collapse in={checked} {...(checked ? { timeout: 8000 } : {})}>
                 <BoxesPart/>
             </Collapse>
                 
