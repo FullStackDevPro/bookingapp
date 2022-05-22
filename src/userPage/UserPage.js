@@ -22,6 +22,7 @@ import { hover } from 'glamor';
 import Login from "../components/Login"
 import ContactUs from "./ContactForm"
 import ToShowUserBooking from "./UserBooking"
+import Footer from "../HomePage/Footer"
 
 const useStyles = makeStyles((theme) => ({
     root: {

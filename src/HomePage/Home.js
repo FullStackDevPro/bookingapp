@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { CssBaseline } from "@material-ui/core";
 import eaysImage from "../assets/pexels-shane-aldendorff-1493112.jpg"
@@ -25,14 +25,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home(){
     const classes = useStyles();
+    const [checked,setChecked] = useState();
     return ( 
         //< className={classes.root}>
     <div >
-        
-        <CssBaseline/>
-        <Header />
-        {/* <MyPage user = {"Malek"}/> */}
-
+        {/* {checked ?  <div> <CssBaseline/> <Header /> </div>  : <div> <MyPage user = {"Malek"}/> </div> } */}
+        {/* <CssBaseline/> 
+        <Header /> */}
+        <MyPage user = {"Malek"}/>
+        {/* <Booking/> */}
     </div>
     )    
 }

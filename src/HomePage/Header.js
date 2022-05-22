@@ -17,6 +17,7 @@ import FooterPart from "./Footer"
 
 
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -148,19 +149,10 @@ export default function Header({state}){
             {...(checked ? {timeout:4000} : {})}
             // collapsedSize={0}
             >
-            {/* <div className={classes.container}>
-                <h2 className={classes.appbarTitle}>Welcome to Eyes <span className={classes.colorText}>Examination Centre</span> </h2>
-                <h1 className={classes.title}>Book <br/> an <span className={classes.colorText}>appointment for examination</span> </h1>
-                <Scroll to = "signIn/signUp" smooth={true}>
-                <IconButton >
-                    <ExpandMoreIcon className={classes.goDown} />
-                </IconButton>
-                </Scroll>
-            </div> */}
             </Collapse>
         </div>
         </Collapse>
-        <LogInPage/>
+        <LogInPage/> 
         <ShowServices/>
         <About2/>
         <FooterPart/>

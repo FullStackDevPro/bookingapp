@@ -71,11 +71,11 @@ class Booking extends Component{
     }
 
     successNotify = () => {
-        toast.success(`${this.state.selectedDay} / ${this.state.appointment}  appointment is booked successfuly `,
+        toast.success(`${this.state.selectedDay} - ${this.state.appointment}  appointment for ${this.state.selectedAppointmentType} is booked successfuly `,
     {
     position:"top-center",
     theme:"colored",
-    autoClose:5000,
+    autoClose:6000,
     pauseOnHover: true,
     closeButton:true,
     hideProgressBar :true,    
@@ -160,7 +160,7 @@ class Booking extends Component{
         this.setState( {selectedAppointmentType:e.target.value})
     }
 
-    postNew = () => { 
+    postNewAppointment = () => { 
 
         if(this.state.selectedMonth == "" ){
             this.errorDisplay(this.state.errorMonth)
@@ -173,23 +173,30 @@ class Booking extends Component{
         }else if(this.state.selectedAppointmentType==""){
             this.errorDisplay("Please select a type !")
         }else{
-            // uncomment when the the path to DB is done 
 
-        // const newAppointment = {
-        //     userID : "01",
-        //     date : `${this.state.selectedDay}`,
-        //     time : `${this.state.appointment}`,}
+            const newAppointment = {
+                email : "adam@gmail.com",
+                date : this.state.selectedDay,
+                slot : this.state.appointment,
+                typeBooking :  this.state.selectedAppointmentType
+            }
+            console.log(newAppointment)
+            this.postBookingToDB(JSON.stringify(newAppointment))
+        }
+    };
 
-        // fetch('http://localhost:3000/api/postStudent', {
-        //     method: 'POST',  
-        //     body: JSON.stringify(newAppointment),
-        //     headers: {
-        //         'Content-Type': 'application/json'}})
-                
-        //         .then((res) => res.json())
-        //         .then(data => this.setState({ postState : data.success }))
-        //         .catch((err) => console.log('error'))
-            this.setState({postState : true}) 
+    postBookingToDB = async(bookin_data)=>{
+        console.log(bookin_data)
+        let postingBooking = await fetch("http://localhost:3000/api/user/booking",{
+            method :"post",
+            body : bookin_data,
+            headers :{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        let res = await postingBooking.json()
+        if(res.status == 200){
             this.successNotify()
             this.setState({
                 selectdDate : "",
@@ -200,8 +207,13 @@ class Booking extends Component{
                 month:[],
                 fullDate:[]
             })
+            this.setState({postState : true})
+        }else if(res.status == 400){
+            this.errorDisplay("The appointment is not booked !!!")
+        }else{
+            this.errorDisplay("Something wrong happens during booking to DB")
         }
-    };
+    }
 
     displayResult = (value)=> {
         if(value == true){
@@ -267,7 +279,7 @@ class Booking extends Component{
                        </select>
                         <br>
                         </br>
-                       <button class="button-86" role="button" onClick={this.postNew}>Book</button>
+                       <button class="button-86" role="button" onClick={this.postNewAppointment}>Book</button>
                        <ToastContainer  style={{fontSize : "12px"}}/>
                     {/* </section> */}
                 {/* </body> */}

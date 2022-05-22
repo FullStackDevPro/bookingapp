@@ -20,7 +20,7 @@ class Form extends React.Component {
             regEmail : /\S+@\S+\.\S+/,
             regForName : /^[a-zA-Z]+(\s{1}[a-zA-Z]+)*$/,
             validName : "Valid Name",
-            InvalidName : "Invalid Name, Not allowed to enter number or not allowed to be empty",
+            InvalidName : "Invalid Name, not allowed to enter number, not allowed to be empty",
             validEmail : "Valid Email",
             InvalidEmail : "Invalid Email ",
             passWordMessage : "Please, enter the password ",
@@ -60,21 +60,79 @@ class Form extends React.Component {
             let getPasswordStatus2 = this.checkUserPassword(this.state.passWord)
             if(getEmailStatus2 == true && getPasswordStatus2 == true && getNameStatus == true ){
                 this.setState({userEmail:this.state.email , userPassword : this.state.passWord ,fullName : this.state.nameOfUser})
-                console.log("the signUp form is checked ", this.state.email , "password" , this.state.passWord , this.state.nameOfUser)
+                console.log("the signUp form is checked ", this.state.email , "password" , this.state.passWord , "Name ",this.state.nameOfUser)
+                this.newUser()
             }else{
                 console.log("setting value in REGISTER FORM is faild ")
             } 
         }
-        this.emptyValue()
+        this.makeEmpty()
         e.preventDefault();
     }
 
-    isLoged = ()=> {
-        this.setState({isLogedStatus:true})
-        console.log(this.state.isLogedStatus)
+    isLoged = ()=>{
+        // this.setState({isLogedStatus:true})
+        // console.log(this.state.isLogedStatus)
+        let dataToLogIn = {
+            email :  this.state.email,
+            password :  this.state.passWord,
+        }
+        console.log("====>" ,dataToLogIn)
+        this.checkUserLogIn(JSON.stringify(dataToLogIn))
     }
 
-    emptyValue = ()=> {
+    checkUserLogIn = async(login_data)=>{
+        console.log(login_data)
+        let postingUser = await fetch("http://localhost:3000/api/user/login",{
+            method :"post",
+            body : login_data,
+            headers :{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        let res = await postingUser.json()
+        if(res.status == 200){
+            this.SuccessDisplay("You logged In")
+        }else if(res.status == 400){
+            this.errorDisplay("Invalid password")
+        }else if(res.status==401) {
+            this.errorDisplay("Email is not found")
+        }
+    }
+
+    newUser = ()=>{
+        let newUser = {
+            name  : this.state.nameOfUser,
+            email :  this.state.email,
+            password :  this.state.passWord,
+        }
+        console.log("====>" ,newUser)
+        this.postingNewUser(JSON.stringify(newUser))
+
+    }
+
+    postingNewUser = async(postUser)=>{
+        console.log(postUser)
+        let postingUser = await fetch("http://localhost:3000/api/user/register",{
+            method :"post",
+            body : postUser,
+            headers :{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        let res = await postingUser.json()
+        if(res.status == 200){
+            this.SuccessDisplay("The account is created successfuly")
+        }else if(res.status == 400){
+            this.errorDisplay("Email already exists")
+        }else {
+            this.errorDisplay("Creation of account is field")
+        }
+    }
+
+    makeEmpty = ()=> {
         this.setState({email :""})
         this.setState({passWord :""})
         this.setState({nameOfUser : ""})
@@ -154,17 +212,14 @@ class Form extends React.Component {
     getUserEmail = (e)=> {
         this.setState({email:e.target.value})
     }
-    singUpNewUser = ()=>{
 
-    }
-  
     render() {
-        let page ;
-        if(this.state.isLogedStatus){
-            return (
-                <GoToUserPage/>
-            )
-        }else{  
+        // let page ;
+        // if(this.state.isLogedStatus){
+        //     return (
+        //         <GoToUserPage/>
+        //     )
+        // }else{  
       return (
         <div className="container">
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : 250}px, 0px)`}} className="form-div">
@@ -184,7 +239,7 @@ class Form extends React.Component {
         </div>
       );
     }
-    }
+    // }
 }
 
 export default Form ;

@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+var cors = require('cors')
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const signal  = require("signale");
@@ -18,6 +19,7 @@ const authRoute = require('./routes/auth');
 
 
 // Middlewares
+app.use(cors());
 app.use(logger('dev'))
 app.use(express.json());
 app.use(express.static('public'));

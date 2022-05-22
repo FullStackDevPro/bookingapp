@@ -19,7 +19,8 @@ router.post('/register', async (req, res) => {
     const emailExist = await User.findOne({ email: req.body.email });
 
     if (emailExist) {
-        return res.status(400).json({error: 'Email exists'});
+        // return res.status(400).json({error: 'Email exists', "status"});
+        return res.status(400).json({"status" : 400});
     }
 
     // Hash Password
@@ -36,9 +37,9 @@ router.post('/register', async (req, res) => {
     try {
         const savedUser = await user.save();
         const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
-        res.json({ user: user._id, redirect: 'Success', token });
+        res.json({ user: user._id,"status" : 200 ,redirect: 'Success', token });
     } catch (err) {
-        res.status(400).json(err);
+        res.status(500).json({"status" : 500});
     }
 });
 
@@ -54,18 +55,18 @@ router.post('/login', async (req, res) => {
     // if existing email
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-        return res.status(400).json({error: 'Email is not found'});
+        return res.status(401).json({error: 'Email is not found', "status" : 401});
     }
 
     // Password correct?
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if(!validPassword) {
-        return res.status(400).json({error: 'Invalid password'});
+        return res.status(400).json({error: 'Invalid password', "status" : 400});
     }
 
     // Create and assign token
     const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).json({token: token, redirect: 'Sucsses'});
+    res.header('auth-token', token).json({token: token, redirect: 'Sucsses', "status" :200});
 
 });
 
@@ -94,14 +95,15 @@ router.post('/booking', async (req, res) => {
             email: req.body.email,
             date: req.body.date,
             slot: req.body.slot,
+            type:req.body.typeBooking,
         });
     
         try {
             const savedBooking = await booking.save();
             const token = jwt.sign({_id: booking._id}, process.env.TOKEN_SECRET);
-            res.json({ user: booking._id, redirect: 'Success', token });
+            res.json({ user: booking._id, "status" : 200 ,redirect: 'Success', token });
         } catch (err) {
-            res.status(400).json(err);
+            res.status(400).json({err : error.message , "status" : 400});
         }
  
 });

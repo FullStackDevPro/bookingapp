@@ -5,7 +5,8 @@ const bookingSchema =  mongoose.Schema(
 	{
 		email:{type: String},
 		date: { type: String},
-		slot: { type: String}
+		slot: { type: String},
+		typeBooking:{type:String}
 	},
 	{
 		timestamps: true

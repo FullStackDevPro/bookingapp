@@ -67,7 +67,10 @@ class showBookingUser extends Component {
                                 {/* dataToDisplay */}
                             {this.state.dataToDisplay.map((d)=> (
                                 <tr  key={d.id}>
+                                    {/* date,slot,type,booked time  */}
                                 <td>{d.student_id}</td>
+                                <td>{d.student_name}</td>
+                                <td>{d.student_name}</td>
                                 <td>{d.student_name}</td>
                                 </tr>
                                 ))}

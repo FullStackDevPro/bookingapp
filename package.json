@@ -5,8 +5,7 @@
   "scripts": {
     "start": "cd Backend && node server.js",
     "dev": "cd Backend && nodemon server.js",
-    "devstart": "nodemon -L .bin/www",
-    "serverstart": "SET DEBUG=fullstacklab2:* & npm run devstart",
+
     "webStart": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production"
   },
