@@ -1,15 +1,37 @@
-.rw-wrapper {
+/* .rw-wrapper {
     width: 80%;
     position: relative;
     margin: 110px auto 0 auto;
     font-family: 'Bree Serif';
     padding: 10px;
     align-items: center;
+  } */
+
+  .rw-wrapper {
+    width: 80%;
+    /* position:absolute; */
+    /* margin: 110px auto 0 auto; */
+    font-family: 'Bree Serif';
+    /* padding: 10px; */
+    /* align-items:center; */
+    margin-right: 1600px;
+    margin-top: -200px;
   }
-  span{
-      font-size: 60px;
+
+  /* class="rw-wrapper">
+
+        <div class="rw-words rw-words-1"> */
+
+  .spanStyle{
+      font-size: 35px;
       color: black;
-      
+      border-bottom: 1px solid lightblue;
+  }
+  .spanStyle2{
+    color: lightblue;
+    font-size: 5rem;
+    font-family: Nunito;
+    font-weight: bold;
   }
   
   .rw-words {
@@ -21,7 +43,8 @@
     position: absolute;
     opacity: 0;
     overflow: hidden;
-    color: #6b969d;
+    color: lightblue;
+    font-weight: bold;
     -webkit-animation: rotateWord 18s linear infinite 0s;
     -ms-animation: rotateWord 18s linear infinite 0s;
     animation: rotateWord 18s linear infinite 0s;
@@ -31,35 +54,40 @@
     -webkit-animation-delay: 3s;
     -ms-animation-delay: 3s;
     animation-delay: 3s;
-    color: #6b889d;
+    color: black;
+    font-weight: bold;
   }
   
   .rw-words-1 span:nth-child(3) {
     -webkit-animation-delay: 6s;
     -ms-animation-delay: 6s;
     animation-delay: 6s;
-    color: #6b739d;
+    color:white;
+    font-weight: bold;
   }
   
   .rw-words-1 span:nth-child(4) {
     -webkit-animation-delay: 9s;
     -ms-animation-delay: 9s;
     animation-delay: 9s;
-    color: #7a6b9d;
+    color:gray;
+    font-weight: bold;
   }
   
   .rw-words-1 span:nth-child(5) {
     -webkit-animation-delay: 12s;
     -ms-animation-delay: 12s;
     animation-delay: 12s;
-    color: #8d6b9d;
+    color: lightblue;
+    font-weight: bold;
   }
   
   .rw-words-1 span:nth-child(6) {
     -webkit-animation-delay: 15s;
     -ms-animation-delay: 15s;
     animation-delay: 15s;
-    color: #9b6b9d;
+    color: lightslategray;
+    font-weight: bold;
   }
   
   @-webkit-keyframes rotateWord {

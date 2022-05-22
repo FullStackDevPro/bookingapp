@@ -89,12 +89,12 @@ export default function Header({state}){
         <section class="rw-wrapper">
 
         <div class="rw-words rw-words-1">
-          <span>breathtaking moments</span>
-          <span>lovely sounds</span>
-          <span>incredible magic</span>
-          <span>unseen experiences</span>
-          <span>happy feelings</span>
-          <span>beautiful butterflies</span>
+          <span className='spanStyle'>Welcome to the most famous Eyes Examination</span>
+          <span className='spanStyle'>Book an appointment quickly & easily</span>
+          <span className='spanStyle'>Up to 30 % on all type of glasses</span>
+          <span className='spanStyle'>Free eye examination children 8-12 years</span>
+          <span className='spanStyle'>Get a detailed control recipe </span>
+          <span className='spanStyle'>Get a free glasses by buying sunglasses </span>
         </div>
         </section>
       )
@@ -142,7 +142,7 @@ export default function Header({state}){
 
                 </Toolbar>
             </AppBar>
-
+            <TextShow/>
             <Collapse 
             in={checked}
             {...(checked ? {timeout:4000} : {})}

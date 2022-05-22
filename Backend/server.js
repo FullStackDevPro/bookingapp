@@ -3,19 +3,22 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const signal  = require("signale");
+const  logger = require('morgan');
 // const pages = require('./routes/pages');
 dotenv.config();
 
 
 // connect to DB
 mongoose.connect(process.env.DB_CONNECT, { useUnifiedTopology: true, useNewUrlParser: true }, () => {
-    console.log('connected to db');
+    signal.success('connected to db');
 });
 
 const authRoute = require('./routes/auth');
 
 
 // Middlewares
+app.use(logger('dev'))
 app.use(express.json());
 app.use(express.static('public'));
 // Route Middleware
@@ -23,5 +26,5 @@ app.use('/api/user', authRoute);
 
 
 app.listen(3000, () => {
-    console.log('Server running');
+    signal.info('Server running');
 });
