@@ -12,7 +12,7 @@ import eaysImage from "../assets/eyeglass-colors.jpg"
 import LogInPage from "./Form"
 import ShowServices from "./ShowServices"
 import "../style/TextAnimation.css"
-import About2 from "./About2"
+import About2 from "./AboutUs"
 import FooterPart from "./Footer"
 
 

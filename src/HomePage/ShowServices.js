@@ -1,10 +1,8 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Service from "./Services"
-import Information from "./Info.js"
 import useWindowPositio from "../hook/useWindowPosition"
 import eaysImage from "../assets/hx-hero-gaming-eyewear-spectre-line-prod-page-lg.jpg"
-import BoxesPart from "./Boxes"
+import BoxesPart from "./BoxesServices"
 import { Collapse ,IconButton} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,8 +33,6 @@ export default function ShowServices({state}){
             <Collapse in={checked} {...(checked ? { timeout: 8000 } : {})}>
                 <BoxesPart/>
             </Collapse>
-                
-                
         </div>
     )
 }

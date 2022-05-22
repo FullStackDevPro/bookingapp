@@ -1,19 +1,19 @@
   
   .bookingBody{
-    background-image: url("../image/pexels-shane-aldendorff-1493112_11zon.jpeg");
+    /* background-image: url("../image/pexels-shane-aldendorff-1493112_11zon.jpeg"); */
     background-repeat: no-repeat;
     background-size: cover;
     height: 50ch;
   }
   
   
-  body { 
+  /* body {  */
     /* background-image: url("../image/5.jpeg");
     background-repeat: no-repeat;
     background-size: cover; */
     /* background-color:rgba(0, 0,0, 0.7) ;
     text-align: center; */
-  }
+  /* } */
   
   .center {
     /* background-image: url("../image/pexels-shane-aldendorff-1493112_11zon.jpeg"); */

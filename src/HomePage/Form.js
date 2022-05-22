@@ -6,7 +6,6 @@ import SortIcon from "@material-ui/icons/Sort"
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import {Link as Scroll} from "react-scroll";
 import eaysImage from "../assets/glass5.jpg"
-import Places from "./Info.js"
 import useWindowPositio from "../hook/useWindowPosition"
 import Login from "../components/Login"
 

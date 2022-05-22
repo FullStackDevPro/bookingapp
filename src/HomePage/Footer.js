@@ -1,6 +1,6 @@
 import React from "react";
 import "../style/FooterStyling.css"
-import About2 from "./About2"
+import About2 from "./AboutUs"
 import { makeStyles } from '@material-ui/core/styles';
 import CallIcon from "@material-ui/icons/Call"
 import MailIcon from '@material-ui/icons/Mail';

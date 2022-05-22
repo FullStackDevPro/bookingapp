@@ -10,7 +10,7 @@ import MyPage from "../userPage/UserPage"
 import ContactUs from "../userPage/ContactForm";
 import Login from "../components/Login"
 import FooterPart from "./Footer"
-import BoxesPart from "./Boxes";
+import BoxesPart from "./BoxesServices";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,16 +31,8 @@ export default function Home(){
         
         <CssBaseline/>
         <Header />
-        {/* <Login_signUp/>
-        <ShowAboutPage/> */}
-        {/* <Login/>
-        <Booking/> */}
-        {/* <Booking/> */}
         {/* <MyPage user = {"Malek"}/> */}
-        {/* <ContactUs/> */}
-        {/* <Login/> */}
-        {/* <FooterPart/> */}
-        {/* <BoxesPart/> */}
+
     </div>
     )    
 }
