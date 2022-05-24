@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import "../style/LoginStyle.css" 
 import { ToastContainer, toast } from 'react-toastify';
+import {BrowserRouter,Route,Routes} from "react-router-dom"
 import GoToUserPage from "../userPage/UserPage"
 import HomePage from "../HomePage/Home"
 import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
+import {useNavigate} from "react-router-dom"
+import {Navigate} from "react-router-dom"
+
 
 class Form extends React.Component {
     constructor(props) {
@@ -25,6 +29,7 @@ class Form extends React.Component {
             InvalidEmail : "Invalid Email ",
             passWordMessage : "Please, enter the password ",
             passWordMessage2 : "Please, enter the password in the signUp form",
+            redirect : false,
 
             userEmail : "",
             userPassword : "",
@@ -49,7 +54,7 @@ class Form extends React.Component {
             if(getEmailStatus == true && getPasswordStatus == true ){
                 this.setState({userEmail:this.state.email , userPassword : this.state.passWord})
                 console.log("the login form is checked " , this.state.userEmail , "password" , this.state.userPassword)
-                this.isLoged()
+                this.isLoged()           
             }else{
                 console.log("setting value in LOGIN FORM is faild ")
             }
@@ -93,7 +98,9 @@ class Form extends React.Component {
         })
         let res = await postingUser.json()
         if(res.status == 200){
-            this.SuccessDisplay("You logged In")
+            this.setState({isLogedStatus:true})
+            this.setState({redirect:true})
+            this.SuccessDisplay("You logged In") 
         }else if(res.status == 400){
             this.errorDisplay("Invalid password")
         }else if(res.status==401) {
@@ -128,7 +135,7 @@ class Form extends React.Component {
         }else if(res.status == 400){
             this.errorDisplay("Email already exists")
         }else {
-            this.errorDisplay("Creation of account is field")
+            this.errorDisplay("Password should be more than 6 characters")
         }
     }
 
@@ -216,11 +223,13 @@ class Form extends React.Component {
     render() {
         // let page ;
         // if(this.state.isLogedStatus){
-        //     return (
-        //         <GoToUserPage/>
+        //     return (    
+        //         <HomePage isOpen={false}/>
         //     )
-        // }else{  
+        // }else{ 
+
       return (
+          
         <div className="container">
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : 250}px, 0px)`}} className="form-div">
             <form onSubmit={this.onSubmit.bind(this)}>
@@ -229,16 +238,18 @@ class Form extends React.Component {
               {this.state.form === 'login' ? '': <input placeholder="Name" type="text"  value={this.state.nameOfUser} onChange={this.getUserName.bind(this)}/>}
               {/* <button className="button-primary">Submit</button> */}
               {this.state.form === 'login' ? <button className="button-primary">Log In</button> : <button className="button-primary">Sign Up</button> }
+              { this.state.redirect && <Navigate to='/userPage'  replace={true} />}
             </form>
           </div>
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : -400}px, 0px)`}} className="button-div">
             <p className="buttonText">{this.state.form === 'login' ? 'Do not have an account?' : 'Already a member?'}</p>
             <button onClick={() => {this.setState({form: this.toggle[this.state.form]})}}>{this.toggle[this.state.form]}</button>
           </div>
-          <ToastContainer style={{fontSize :"15px"}} />
+          <ToastContainer style={{fontSize :"14px", width:"80%"}} />
         </div>
       );
     }
+    
     // }
 }
 

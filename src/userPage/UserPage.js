@@ -23,6 +23,7 @@ import Login from "../components/Login"
 import ContactUs from "./ContactForm"
 import ToShowUserBooking from "./UserBooking"
 import Footer from "../HomePage/Footer"
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -98,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
 
   
 export default function Header({user}){
+    const route =useNavigate();
     const classes = useStyles();
     const [checked,setChecked] = useState(false);
     const [contactForm,setcontactForm] = useState(null);
@@ -144,6 +146,10 @@ export default function Header({user}){
 
       setAnchorEl(null);
     };
+
+    const BackToHome = (e)=> {
+      console.log("log out works")
+    }
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -193,8 +199,8 @@ export default function Header({user}){
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VpnKeyIcon className={classes.icon2}/> Change password</MenuItem>
                 </Menu>
 
-                <IconButton  title='LogOut'>
-                    <LockOpenOutlinedIcon  className={classes.icon2} />
+                <IconButton  title='LogOut' onClick={()=>  route("/")}>
+                    <LockOpenOutlinedIcon  className={classes.icon2}  />
                     <h1 >Log Out</h1>
                 </IconButton>
                 

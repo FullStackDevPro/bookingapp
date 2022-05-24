@@ -280,7 +280,7 @@ class Booking extends Component{
                         <br>
                         </br>
                        <button class="button-86" role="button" onClick={this.postNewAppointment}>Book</button>
-                       <ToastContainer  style={{fontSize : "12px"}}/>
+                       <ToastContainer  style={{fontSize : "14px", width : "80%"}}/>
                     {/* </section> */}
                 {/* </body> */}
                 </div>

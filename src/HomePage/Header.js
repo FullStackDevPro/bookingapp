@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       },
       appbarTitle: {
         flexGrow: '1',
-        color:" black",
+        color:" white",
         // color:"black",
         fontSize: '2rem',
         fontFamily: 'Nunito',
@@ -152,10 +152,10 @@ export default function Header({state}){
             </Collapse>
         </div>
         </Collapse>
-        <LogInPage/> 
+        {/* <LogInPage/> 
         <ShowServices/>
         <About2/>
-        <FooterPart/>
+        <FooterPart/> */}
         </div>
     )
 }
