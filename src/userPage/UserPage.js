@@ -100,6 +100,7 @@ const useStyles = makeStyles((theme) => ({
   
 export default function Header({user}){
     const route =useNavigate();
+    const [userEmail,setUserEmail] = useState(user)
     const classes = useStyles();
     const [checked,setChecked] = useState(false);
     const [contactForm,setcontactForm] = useState(null);
@@ -121,6 +122,7 @@ export default function Header({user}){
         setChangePassword(true)
         setBooking(true)
         setShowBookin(false)
+        console.log(userEmail)
         
       }else if(e.target.innerText == "Book"){
           setcontactForm(true)

@@ -36,7 +36,7 @@ function App(){
             <Route path="/" element ={<ShowServices/>}></Route>
             <Route path="/" element ={<AboutUs/>}></Route>
             <Route path="/" element ={<FooterPart/>}></Route> */}
-            <Route path="/userPage" element ={<MyPage user = {"Malek"}/>}></Route> 
+            <Route path="/userPage" element ={<MyPage user = {"mmmm"}/>}></Route> 
         </Routes>
         </BrowserRouter>
         // <div>

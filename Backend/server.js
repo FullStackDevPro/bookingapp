@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const signal  = require("signale");
 const  logger = require('morgan');
-dotenv.config();
+dotenv.config();   
 
 
 // connect to DB

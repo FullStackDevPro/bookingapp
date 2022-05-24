@@ -8,6 +8,7 @@ import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import {useNavigate} from "react-router-dom"
 import {Navigate} from "react-router-dom"
+import MyPage from "../userPage/UserPage"
 
 
 class Form extends React.Component {
@@ -227,9 +228,19 @@ class Form extends React.Component {
         //         <HomePage isOpen={false}/>
         //     )
         // }else{ 
+            // <BrowserRouter>
+            // <Routes>
+            //   <Route path="/userPage" element ={<MyPage user = {"lllll"}/>}></Route>
+            // </Routes> 
+            // </BrowserRouter>
 
       return (
-          
+          <div>
+              
+              {/* <Routes>
+              <Route path="/userPage" element ={<MyPage user = {"lllll"}/>}></Route>
+              </Routes> */}
+              
         <div className="container">
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : 250}px, 0px)`}} className="form-div">
             <form onSubmit={this.onSubmit.bind(this)}>
@@ -238,7 +249,8 @@ class Form extends React.Component {
               {this.state.form === 'login' ? '': <input placeholder="Name" type="text"  value={this.state.nameOfUser} onChange={this.getUserName.bind(this)}/>}
               {/* <button className="button-primary">Submit</button> */}
               {this.state.form === 'login' ? <button className="button-primary">Log In</button> : <button className="button-primary">Sign Up</button> }
-              { this.state.redirect && <Navigate to='/userPage'  replace={true} />}
+              { this.state.redirect && <Navigate to= '/userPage'   replace={true}  />}
+              {/* {this.state.redirect == true ?  <MyPage user={"mmmmmm"}/> : null} */}
             </form>
           </div>
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : -400}px, 0px)`}} className="button-div">
@@ -246,6 +258,7 @@ class Form extends React.Component {
             <button onClick={() => {this.setState({form: this.toggle[this.state.form]})}}>{this.toggle[this.state.form]}</button>
           </div>
           <ToastContainer style={{fontSize :"14px", width:"80%"}} />
+        </div>
         </div>
       );
     }
