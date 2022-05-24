@@ -19,8 +19,8 @@ router.post('/register', async (req, res) => {
     const emailExist = await User.findOne({ email: req.body.email });
 
     if (emailExist) {
-        // return res.status(400).json({error: 'Email exists', "status"});
-        return res.status(400).json({"status" : 400});
+        return res.status(400).json({error: 'Email exists', "status"});
+        // return res.status(400).json({"status" : 400});
     }
 
     // Hash Password
@@ -107,4 +107,23 @@ router.post('/booking', async (req, res) => {
         }
  
 });
+
+
+
+router.get('/bookings', async(req, res) => {
+    try {
+
+        const bookings = await Booking.find({},{ 
+            "date": 1,
+            "slot": 1,
+            "_id": 0
+        });
+        res.json(bookings);
+    } catch (error) {
+        res.json({message:err})
+    }
+});
+
+
+
 module.exports = router;

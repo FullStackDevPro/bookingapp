@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const signal  = require("signale");
 const  logger = require('morgan');
-// const pages = require('./routes/pages');
 dotenv.config();
 
 
@@ -28,5 +27,5 @@ app.use('/api/user', authRoute);
 
 
 app.listen(3000, () => {
-    signal.info('Server running');
+    signal.info('Server running on http://localhost:3000');
 });
