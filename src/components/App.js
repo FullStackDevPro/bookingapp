@@ -11,6 +11,7 @@ import AboutUs from "../HomePage/AboutUs"
 import FooterPart from "../HomePage/Footer"
 import ShowServices from "../HomePage/ShowServices";
 import MyPage from "../userPage/UserPage"
+import {Navigate,navigation} from "react-router-dom"
 
 // const useStyles = makeStyles((theme) => ({
 //     root :{
@@ -22,10 +23,11 @@ import MyPage from "../userPage/UserPage"
 //     }
 // }));
 
-function App(){
+function App(props){
     // const classes = useStyles();
-    const [checked,setChecked] = useState(false);
-    return (  
+    const [checked,setChecked] = useState();
+    const [user_email,setuser_email] = useState()
+        return (  
         <BrowserRouter >
             {/* <Home/> */}
             
@@ -36,12 +38,13 @@ function App(){
             <Route path="/" element ={<ShowServices/>}></Route>
             <Route path="/" element ={<AboutUs/>}></Route>
             <Route path="/" element ={<FooterPart/>}></Route> */}
-            <Route path="/userPage" element ={<MyPage user = {"mmmm"}/>}></Route> 
+            <Route path="/userPage" element ={<MyPage user_email ={"test sending data"} />}></Route> 
         </Routes>
         </BrowserRouter>
         // <div>
         //     <MyPage/>
         // </div>
+        
     )
 }
 export default App;

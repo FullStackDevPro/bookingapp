@@ -84,9 +84,9 @@ router.post('/booking', async (req, res) => {
        const dateExist = await Booking.findOne({ date: req.body.date });
        const slotExist = await Booking.findOne({ slot: req.body.slot });
 
-       if (dateExist && slotExist ) {
-           return res.status(400).json({error: 'Appointment booked'});
-       }
+    //    if (dateExist && slotExist ) {
+    //        return res.status(400).json({error: 'Appointment booked'});
+    //    }
 
     
 
@@ -95,7 +95,7 @@ router.post('/booking', async (req, res) => {
             email: req.body.email,
             date: req.body.date,
             slot: req.body.slot,
-            type:req.body.typeBooking,
+            selecttype:req.body.selecttype,
         });
     
         try {
@@ -123,7 +123,6 @@ router.get('/bookings', async(req, res) => {
         res.json({message:err})
     }
 });
-
 
 
 module.exports = router;

@@ -6,11 +6,18 @@ const bookingSchema =  mongoose.Schema(
 		email:{type: String},
 		date: { type: String},
 		slot: { type: String},
-		typeBooking:{type:String}
+		selecttype:{type: String},
 	},
 	{
 		timestamps: true
 	}
+
+)
+
+const login =  mongoose.Schema(
+	{
+		email:{type: String},
+	},
 
 )
 

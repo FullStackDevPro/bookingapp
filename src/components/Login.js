@@ -7,8 +7,11 @@ import HomePage from "../HomePage/Home"
 import { AppBar, Collapse, IconButton, Toolbar } from '@material-ui/core';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 import {useNavigate} from "react-router-dom"
-import {Navigate} from "react-router-dom"
+import {Navigate,navigation} from "react-router-dom"
 import MyPage from "../userPage/UserPage"
+import AppComponent from "./App"
+
+
 
 
 class Form extends React.Component {
@@ -106,6 +109,14 @@ class Form extends React.Component {
             this.errorDisplay("Invalid password")
         }else if(res.status==401) {
             this.errorDisplay("Email is not found")
+        }
+    }
+
+    TakeUserEmail = async(email_to_send)=>{
+        console.log(email_to_send)
+        let EmailToSend = {
+            email :  this.state.email,
+            password :  this.state.passWord,
         }
     }
 
@@ -249,8 +260,7 @@ class Form extends React.Component {
               {this.state.form === 'login' ? '': <input placeholder="Name" type="text"  value={this.state.nameOfUser} onChange={this.getUserName.bind(this)}/>}
               {/* <button className="button-primary">Submit</button> */}
               {this.state.form === 'login' ? <button className="button-primary">Log In</button> : <button className="button-primary">Sign Up</button> }
-              { this.state.redirect && <Navigate to= '/userPage'   replace={true}  />}
-              {/* {this.state.redirect == true ?  <MyPage user={"mmmmmm"}/> : null} */}
+              { this.state.redirect && <Navigate to= '/userPage'  replace={true}  />}              
             </form>
           </div>
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : -400}px, 0px)`}} className="button-div">

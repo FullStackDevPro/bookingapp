@@ -51,26 +51,26 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
       },
       icon: {
-        color: 'black',
+        color: 'white',
         fontSize: '4rem',
         cursor: 'pointer',
         '&:hover': {
-          color: "lightblue",
+          color: "black",
        },
       },
       icon2 :{
-        color : "black",
+        color : "white",
         fontSize : '6rem',
         padding: '5px 5px 5px 5px',
         cursor: 'pointer',
         '&:hover': {
-          color: "lightblue",
+          color: "black",
        },
       },
 
       colorText: {
         // color: '#5AFF3D',
-        color: 'black',
+        color: 'lighblue',
         fontSize: '4rem',
         fontFamily: 'Nunito',
         fontWeight: 'bold',
@@ -98,9 +98,9 @@ const useStyles = makeStyles((theme) => ({
   }));
 
   
-export default function Header({user}){
+export default function Header(props){
     const route =useNavigate();
-    const [userEmail,setUserEmail] = useState(user)
+    const [userEmail,setUserEmail] = useState(props.user_email)
     const classes = useStyles();
     const [checked,setChecked] = useState(false);
     const [contactForm,setcontactForm] = useState(null);
@@ -166,7 +166,7 @@ export default function Header({user}){
             <AppBar className={classes.appbar} elevation = {20}>
                 <Toolbar className={classes.appbarWrapper}>
                 <h1 className={classes.appbarTitle}> My <span className={classes.colorText}>Eyes</span></h1>
-                <h2 className={classes.appbarTitle}><span className={classes.colorText}>Welcome {user} </span></h2>
+                <h2 className={classes.appbarTitle}><span className={classes.colorText}>Welcome {userEmail} </span></h2>
                 <IconButton title='Menu'  aria-controls='Menu' aria-haspopup ="true" onClick={handleClick}>
                     <MenuIcon  className={classes.icon} />
                     <h1>Menu</h1>
@@ -175,11 +175,11 @@ export default function Header({user}){
                 PaperProps={{  
                   style: {  
                     width: 300,
-                    height:315, 
+                    height:280, 
                     borderradius:"30px" ,
                     backgroundColor:"rgba(0, 0,0, 0.7)",
                     margin:"60px" ,
-                    color: 'black',
+                    color: 'white',
                     fontSize: '5rem',
                     fontFamily: 'Nunito',
                     fontWeight: 'bold',
@@ -198,7 +198,7 @@ export default function Header({user}){
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <CalendarMonthIcon className={classes.icon2}/>Book</MenuItem>
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <MailIcon className={classes.icon2}/> Contact Us </MenuItem>
                   <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VisibilityIcon className={classes.icon2}/> Your Booking</MenuItem>
-                  <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VpnKeyIcon className={classes.icon2}/> Change password</MenuItem>
+                  {/* <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VpnKeyIcon className={classes.icon2}/> Change password</MenuItem> */}
                 </Menu>
 
                 <IconButton  title='LogOut' onClick={()=>  route("/")}>

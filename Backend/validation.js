@@ -29,7 +29,7 @@ const bookingValidation = (data) => {
         email: Joi.string(),
         date: Joi.string(),
         slot: Joi.string(),
-        typeBooking:Joi.string()
+        selecttype:Joi.string()
     });
 
     return schema.validate(data);

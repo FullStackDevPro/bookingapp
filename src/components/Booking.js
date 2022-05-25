@@ -31,10 +31,36 @@ class Booking extends Component{
             getAppointments:[] ,
             AppointmentType : ["Eye examination-glasses", "Eye examination - lenses","Eye health examination", "eye examination children 8-12" , "Eye examination youth 13-19", "Eye examination - driving license" , "Eye examination - First time","Terminal goggles / goggles","Examination dry eyes"],
             selectedAppointmentType:"",
+            loading : false,
+            tableData : [],
+            erroe : false,
+            slotsAndDate : [],
+            slotStatus : false,
+            
         };
     }
 
+    getData = async() => {
+        this.setState({loading:true})
+        try{
+        const response =  await axios.get("http://localhost:3000/api/user/bookings")
+        this.setState({tableData:response.data});
+        }catch(erroe){
+            this.setState({error:true})
+        }finally{
+            this.setState({loading:true})
+        }
+        console.log(this.state.tableData)
+        
+        
+        // .then((res) => this.setState({tableData:res.data,loading:false})
+        // .catch(err => console.log(err))
+        // )
+        
+    }
+
     componentDidMount() {
+        this.getData()
         // remaining months of selected year
         const dateForRemaining  = new Date();
         const rest = this.state.months.slice(dateForRemaining.getMonth())
@@ -141,13 +167,72 @@ class Booking extends Component{
     }
 
     selectedDayChange(e){
+        let get_selected_daya;
+        let list = []
+        let list2 = ["8:00--9:00","9:00--10:00","10:00--11:00","11:00--12:00","13:00--14:00","14:00--15:00","15:00--16:00"]
         if(e.target.value=="---No appointments---"){
             this.errorDisplay("Not allowed to select No appointment!")
             this.setState({selectedDay:""})
         }else{
             this.setState({selectedDay : e.target.value})
+            console.log("e.target value " , e.target.value )
+            this.getData()
+            // this.showAvailableSlots(e.target.value)
+            for(let i = 0 ; i<this.state.tableData.length ; i++){
+                if(e.target.value === this.state.tableData[i].date){
+                    console.log("found")
+                    let get_slot = this.state.tableData[i].slot
+                    list.push(get_slot)
+                    // let remove_slot = this.state.slot.indexOf(get_slot)
+                    // this.state.slot.splice(remove_slot,1)
+                    console.log("Slots is :    ",list) 
+                    // this.setState({slot:list})
+                }
+                // else{
+                //     console.log("not found")
+                // }
+        }
+        if(list.length == 0 ){
+            console.log("it is 0")
+            this.setState({slot:list2})
+        }else {
+            console.log("it is more than 0")
+            for(let i=0 ; i<this.state.slot.length;i++){
+                let item = list[i]
+                if(item!=null){
+                   let remove_slot = this.state.slot.indexOf(item)
+                   this.state.slot.splice(remove_slot,1)
+                   console.log("=======>" , this.state.slot)
+                }
+            }
+            list = []
         }    
+    }     
     }
+
+    // showAvailableSlots = (get_day) => {
+    //     console.log("getDay is : " , get_day)
+    //     console.log(this.state.tableData)
+    //     // let listOfSlot = ["8:00--9:00","9:00--10:00","10:00--11:00","11:00--12:00","13:00--14:00","14:00--15:00","15:00--16:00"]
+    //     let user_selcted_day = this.state.selectedDay
+    //         for(let i = 0 ; i<this.state.tableData.length ; i++){
+    //             if(get_day === this.state.tableData[i].date){
+    //                 console.log("found")
+    //                 let get_slot = this.state.tableData[i].slot
+    //                 console.log(get_slot)
+    //                 let remove_slot = this.state.slot.indexOf(get_slot)
+    //                 this.state.slot.splice(remove_slot,1)
+                    
+    //             }
+    //             else{
+    //                 // this.setState({slot:listOfSlot})
+    //                 console.log("not found")
+    //             }
+            
+    //     }
+        
+    // // console.log("Slots and date" ,this.state.tableData)
+    // }
 
     setDate = (e) => {
         this.setState({currentDate : e.target.value})}
@@ -178,7 +263,7 @@ class Booking extends Component{
                 email : "adam@gmail.com",
                 date : this.state.selectedDay,
                 slot : this.state.appointment,
-                typeBooking :  this.state.selectedAppointmentType
+                selecttype :  this.state.selectedAppointmentType,
             }
             console.log(newAppointment)
             this.postBookingToDB(JSON.stringify(newAppointment))
@@ -197,6 +282,7 @@ class Booking extends Component{
         })
         let res = await postingBooking.json()
         if(res.status == 200){
+            let list = ["8:00--9:00","9:00--10:00","10:00--11:00","11:00--12:00","13:00--14:00","14:00--15:00","15:00--16:00"]
             this.successNotify()
             this.setState({
                 selectdDate : "",
@@ -205,9 +291,12 @@ class Booking extends Component{
                 appointment:"",
                 selectedAppointmentType:"",
                 month:[],
-                fullDate:[]
+                fullDate:[],
+                // slot:list,
             })
+            this.getData()
             this.setState({postState : true})
+
         }else if(res.status == 400){
             this.errorDisplay("The appointment is not booked !!!")
         }else{
@@ -263,9 +352,9 @@ class Booking extends Component{
                        <h1>Please select an appointment : </h1>
                        <select className="form-control" value={this.state.appointment} onChange = {this.selectedappointmentChange.bind(this) }>
                        <option></option>
-                           {this.state.slot.map(x => {  if(checkAppointment == true){
+                           { this.state.slot.map(x => {  if(checkAppointment == true){
                                return <option>{x}</option>
-                           }
+                           } 
 
                            })}
                        </select>
