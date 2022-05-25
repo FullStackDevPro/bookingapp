@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../model/User');
-const Booking = require('../model/booking')
+const Booking = require('../model/booking');
+const Login = require('../model/login')
 const { registerValidation, loginValidation, bookingValidation } = require('../validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -123,6 +124,104 @@ router.get('/bookings', async(req, res) => {
         res.json({message:err})
     }
 });
+
+
+
+
+router.post('/email', async (req, res) => {
+
+    const login = new Login({
+        email: req.body.email
+    });
+
+    try {
+        const savedLogin = await login.save();
+        const token = jwt.sign({_id: login._id}, process.env.TOKEN_SECRET);
+        res.json({ user: login._id,"status" : 200 ,redirect: 'Success', token });
+    } catch (err) {
+        res.status(500).json({"status" : 500});
+    }
+});
+
+
+router.get('/email', async(req, res) => {
+    try {
+
+        const login = await Login.find({},{ 
+            "email": 1,
+            "_id": 0
+        });
+        res.json(login);
+    } catch (error) {
+        res.json({message:err})
+    }
+});
+
+
+// router.get('/user-bookings', async(req, res) => {
+  
+//     try {
+//         const email =  await Login.findOne().email
+        
+
+
+//         // const email = res.json(login.map("email"))
+//         console.log(">>>>>>> "+ email);
+//         const bookings = await Booking.find(
+//             {"email": email},
+//         { 
+//             "date": 1,
+//             "slot": 1,
+//             "_id":0
+//         })
+//         res.json(bookings);
+//     } catch (error) {
+
+//         res.json({message:"err"})
+//     }
+// });
+
+
+router.get('/user-bookings', async(req, res) => {
+
+    const userEmail = req.body.email
+  
+    try {
+
+        const bookings = await Booking.find(
+            {"email": userEmail},
+        { 
+            "date": 1,
+            "slot": 1,
+            "_id":0
+        })
+        res.json(bookings);
+    } catch (error) {
+
+        res.json({message:"err"})
+    }
+});
+
+
+router.delete('/user-email', async(req, res) => {
+    const userEmail = req.body.email
+    try {
+
+        const login = await Login.deleteOne({
+            "email": userEmail
+        })
+
+        res.json({res: "Success"});
+        
+    } catch (error) {
+        res.json({message:"err"})
+    }
+})
+
+
+
+
+
 
 
 
