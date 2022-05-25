@@ -20,8 +20,8 @@ router.post('/register', async (req, res) => {
     const emailExist = await User.findOne({ email: req.body.email });
 
     if (emailExist) {
-        return res.status(400).json({error: 'Email exists', "status" : 400});
-        // return res.status(400).json({"status" : 400});
+        // return res.status(400).json({error: 'Email exists', "status" : 400});
+        return res.status(400).json({"status" : 400});
     }
 
     // Hash Password
@@ -49,9 +49,9 @@ router.post('/login', async (req, res) => {
 
     // Validate User
     const { error } = loginValidation(req.body);
-    if (error) {
-        return res.status(400).json({error: error.details[0].message});
-    }
+    // if (error) {
+    //     return res.status(400).json({error: error.details[0].message});
+    // }
 
     // if existing email
     const user = await User.findOne({ email: req.body.email });
@@ -126,10 +126,6 @@ router.get('/bookings', async(req, res) => {
 });
 
 
-<<<<<<< HEAD
-=======
-
-
 router.post('/email', async (req, res) => {
 
     const login = new Login({
@@ -184,7 +180,7 @@ router.get('/email', async(req, res) => {
 // });
 
 
-router.get('/user-bookings', async(req, res) => {
+router.post('/user-bookings', async(req, res) => {
 
     const userEmail = req.body.email
   
@@ -195,6 +191,7 @@ router.get('/user-bookings', async(req, res) => {
         { 
             "date": 1,
             "slot": 1,
+            "selecttype" : 1,
             "_id":0
         })
         res.json(bookings);
@@ -227,5 +224,4 @@ router.delete('/user-email', async(req, res) => {
 
 
 
->>>>>>> 87c473c50bd3ecca4bcca6b9901160586729cc7e
 module.exports = router;

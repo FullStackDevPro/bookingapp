@@ -36,6 +36,8 @@ class Booking extends Component{
             erroe : false,
             slotsAndDate : [],
             slotStatus : false,
+            getEmail:null,
+            gettingEmailStatus :false,
             
         };
     }
@@ -58,8 +60,21 @@ class Booking extends Component{
         // )
         
     }
+    getEmailUser = async ()=>{
+        let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+            method :"get",
+        })
+        let res = await usersEmail.json()    
+        console.log(res)
+        this.setState({getEmail:res})
+        let emailOfUser = this.state.getEmail[0].email
+        this.setState({gettingEmailStatus:true})
+        this.setState({email:emailOfUser})
+        console.log("=>>>" ,this.state.email)
+    }
 
     componentDidMount() {
+        this.getEmailUser()
         this.getData()
         // remaining months of selected year
         const dateForRemaining  = new Date();
@@ -210,29 +225,6 @@ class Booking extends Component{
     }     
     }
 
-    // showAvailableSlots = (get_day) => {
-    //     console.log("getDay is : " , get_day)
-    //     console.log(this.state.tableData)
-    //     // let listOfSlot = ["8:00--9:00","9:00--10:00","10:00--11:00","11:00--12:00","13:00--14:00","14:00--15:00","15:00--16:00"]
-    //     let user_selcted_day = this.state.selectedDay
-    //         for(let i = 0 ; i<this.state.tableData.length ; i++){
-    //             if(get_day === this.state.tableData[i].date){
-    //                 console.log("found")
-    //                 let get_slot = this.state.tableData[i].slot
-    //                 console.log(get_slot)
-    //                 let remove_slot = this.state.slot.indexOf(get_slot)
-    //                 this.state.slot.splice(remove_slot,1)
-                    
-    //             }
-    //             else{
-    //                 // this.setState({slot:listOfSlot})
-    //                 console.log("not found")
-    //             }
-            
-    //     }
-        
-    // // console.log("Slots and date" ,this.state.tableData)
-    // }
 
     setDate = (e) => {
         this.setState({currentDate : e.target.value})}
@@ -260,7 +252,7 @@ class Booking extends Component{
         }else{
 
             const newAppointment = {
-                email : "adam@gmail.com",
+                email : this.state.email,
                 date : this.state.selectedDay,
                 slot : this.state.appointment,
                 selecttype :  this.state.selectedAppointmentType,

@@ -24,6 +24,8 @@ import ContactUs from "./ContactForm"
 import ToShowUserBooking from "./UserBooking"
 import Footer from "../HomePage/Footer"
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -109,10 +111,12 @@ export default function Header(props){
     const [changePassword,setChangePassword] = useState(null);
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedItem, setSelectedItem] = useState(null);
+    const [getUserEmail,setGetUserEmail] = useState()
+    const [email_user,setEmail] = useState()
     
     useEffect(()=> {
         setChecked(true)
-        
+        get_email()
     },[])
 
     const handleClose = (e) => {
@@ -149,10 +153,44 @@ export default function Header(props){
       setAnchorEl(null);
     };
 
-    const BackToHome = (e)=> {
-      console.log("log out works")
+    const get_email = async()=>{
+      let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+        method :"get",
+      })
+      let res = await usersEmail.json()   
+      setGetUserEmail(res)
+      console.log(getUserEmail)
+    
     }
 
+    const message = ()=>{
+      toast.info("Thanks for your visit and See you soon",
+          {
+          position:"top-center",
+          theme:"colored",
+          autoClose:4000,
+          pauseOnHover: true,
+          closeButton:true,
+          hideProgressBar :true, 
+      })
+  }
+
+    const logOutEvent = async() => {
+      console.log(getUserEmail[0].email)
+      let usersEmail = await fetch("http://localhost:3000/api/user/user-email",{
+        method :"DELETE",
+        body : JSON.stringify({email:getUserEmail[0].email}),
+        headers: {
+          'Content-Type':'application/json',
+        },
+      })
+      let res = await usersEmail.json()    
+      console.log(res)
+      message()
+      route("/")
+      
+    }
+  
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -201,7 +239,8 @@ export default function Header(props){
                   {/* <MenuItem onClick={handleClose} className={classes.colorTextMenu}> <VpnKeyIcon className={classes.icon2}/> Change password</MenuItem> */}
                 </Menu>
 
-                <IconButton  title='LogOut' onClick={()=>  route("/")}>
+                {/* <IconButton  title='LogOut' onClick={()=>  route("/")}> */}
+                <IconButton  title='LogOut' onClick={logOutEvent}>
                     <LockOpenOutlinedIcon  className={classes.icon2}  />
                     <h1 >Log Out</h1>
                 </IconButton>
@@ -216,6 +255,7 @@ export default function Header(props){
               {/* {changePassword==false ? <ContactUs/> : null} */}
                 {/* {booking ? <ContactUs/> : <Booking/> } */}
             </div>
+            {/* <ToastContainer  style={{fontSize : "14px", width : "80%"}}/> */}
         </div>
         </Collapse>
     )

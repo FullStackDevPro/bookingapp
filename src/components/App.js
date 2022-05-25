@@ -38,7 +38,7 @@ function App(props){
             <Route path="/" element ={<ShowServices/>}></Route>
             <Route path="/" element ={<AboutUs/>}></Route>
             <Route path="/" element ={<FooterPart/>}></Route> */}
-            <Route path="/userPage" element ={<MyPage user_email ={"test sending data"} />}></Route> 
+            <Route path="/userPage" element ={<MyPage  />}></Route> 
         </Routes>
         </BrowserRouter>
         // <div>

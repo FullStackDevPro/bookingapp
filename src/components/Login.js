@@ -58,7 +58,8 @@ class Form extends React.Component {
             if(getEmailStatus == true && getPasswordStatus == true ){
                 this.setState({userEmail:this.state.email , userPassword : this.state.passWord})
                 console.log("the login form is checked " , this.state.userEmail , "password" , this.state.userPassword)
-                this.isLoged()           
+                this.isLoged(this.state.email)  
+                   
             }else{
                 console.log("setting value in LOGIN FORM is faild ")
             }
@@ -79,7 +80,7 @@ class Form extends React.Component {
         e.preventDefault();
     }
 
-    isLoged = ()=>{
+    isLoged = (value)=>{
         // this.setState({isLogedStatus:true})
         // console.log(this.state.isLogedStatus)
         let dataToLogIn = {
@@ -87,10 +88,10 @@ class Form extends React.Component {
             password :  this.state.passWord,
         }
         console.log("====>" ,dataToLogIn)
-        this.checkUserLogIn(JSON.stringify(dataToLogIn))
+        this.checkUserLogIn(JSON.stringify(dataToLogIn),value)
     }
 
-    checkUserLogIn = async(login_data)=>{
+    checkUserLogIn = async(login_data,value)=>{
         console.log(login_data)
         let postingUser = await fetch("http://localhost:3000/api/user/login",{
             method :"post",
@@ -105,6 +106,7 @@ class Form extends React.Component {
             this.setState({isLogedStatus:true})
             this.setState({redirect:true})
             this.SuccessDisplay("You logged In") 
+            this.sendUserEmail(value)
         }else if(res.status == 400){
             this.errorDisplay("Invalid password")
         }else if(res.status==401) {
@@ -112,12 +114,24 @@ class Form extends React.Component {
         }
     }
 
-    TakeUserEmail = async(email_to_send)=>{
+    sendUserEmail = (email_to_send)=>{
         console.log(email_to_send)
         let EmailToSend = {
-            email :  this.state.email,
-            password :  this.state.passWord,
+            email :  email_to_send,
         }
+        this.saveLoginEmail(JSON.stringify(EmailToSend))
+    }
+    saveLoginEmail = async(login_data_email)=> {
+        let postLogInEmail = await fetch("http://localhost:3000/api/user/email",{
+            method :"post",
+            body : login_data_email,
+            headers :{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        let res = await postLogInEmail.json()
+        console.log(res)
     }
 
     newUser = ()=>{
