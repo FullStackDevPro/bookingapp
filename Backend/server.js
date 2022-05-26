@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const signal  = require("signale");
 const  logger = require('morgan');
+const PORT = process.env.PORT || 3000;
 dotenv.config();   
 
 
@@ -27,6 +28,6 @@ app.use("/myeyes" ,express.static("../dist"));
 app.use('/api/user', authRoute);
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     signal.info('Server running on http://localhost:3000');
 });
