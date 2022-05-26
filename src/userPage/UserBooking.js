@@ -18,7 +18,8 @@ class showBookingUser extends Component {
     intervalId = null;
     
     getEmailUser = async ()=>{
-        let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+        // let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+            let usersEmail = await fetch("/api/user/email",{
             method :"get",
         })
         let res = await usersEmail.json()    
@@ -34,7 +35,8 @@ class showBookingUser extends Component {
 
     getData = async (emailData)=>{
         let getBooking = emailData
-        let postLogInEmail = await fetch("http://localhost:3000/api/user/user-bookings",{
+        // let postLogInEmail = await fetch("http://localhost:3000/api/user/user-bookings",{
+            let postLogInEmail = await fetch("/api/user/user-bookings",{
             method :"post",
             body : JSON.stringify({email:getBooking}),
             headers :{

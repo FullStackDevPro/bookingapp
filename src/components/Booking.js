@@ -45,7 +45,8 @@ class Booking extends Component{
     getData = async() => {
         this.setState({loading:true})
         try{
-        const response =  await axios.get("http://localhost:3000/api/user/bookings")
+        // const response =  await axios.get("http://localhost:3000/api/user/bookings")
+        const response =  await axios.get("/api/user/bookings")
         this.setState({tableData:response.data});
         }catch(erroe){
             this.setState({error:true})
@@ -61,7 +62,8 @@ class Booking extends Component{
         
     }
     getEmailUser = async ()=>{
-        let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+        // let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+            let usersEmail = await fetch("/api/user/email",{
             method :"get",
         })
         let res = await usersEmail.json()    
@@ -290,7 +292,8 @@ class Booking extends Component{
 
     postBookingToDB = async(bookin_data)=>{
         console.log(bookin_data)
-        let postingBooking = await fetch("http://localhost:3000/api/user/booking",{
+        // let postingBooking = await fetch("http://localhost:3000/api/user/booking",{
+            let postingBooking = await fetch("/api/user/booking",{
             method :"post",
             body : bookin_data,
             headers :{

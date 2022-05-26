@@ -92,7 +92,8 @@ class Form extends React.Component {
 
     checkUserLogIn = async(login_data,value)=>{
         console.log(login_data)
-        let postingUser = await fetch("http://localhost:3000/api/user/login",{
+        // let postingUser = await fetch("http://localhost:3000/api/user/login",{
+            let postingUser = await fetch("/api/user/login",{
             method :"post",
             body : login_data,
             headers :{
@@ -121,7 +122,8 @@ class Form extends React.Component {
         this.saveLoginEmail(JSON.stringify(EmailToSend))
     }
     saveLoginEmail = async(login_data_email)=> {
-        let postLogInEmail = await fetch("http://localhost:3000/api/user/email",{
+        // let postLogInEmail = await fetch("http://localhost:3000/api/user/email",{
+            let postLogInEmail = await fetch("/api/user/email",{
             method :"post",
             body : login_data_email,
             headers :{
@@ -146,7 +148,8 @@ class Form extends React.Component {
 
     postingNewUser = async(postUser)=>{
         console.log(postUser)
-        let postingUser = await fetch("http://localhost:3000/api/user/register",{
+        // let postingUser = await fetch("http://localhost:3000/api/user/register",{
+            let postingUser = await fetch("/api/user/register",{
             method :"post",
             body : postUser,
             headers :{

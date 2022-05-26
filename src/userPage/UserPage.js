@@ -156,7 +156,8 @@ export default function Header(props){
     };
 
     const get_email = async()=>{
-      let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+      // let usersEmail = await fetch("http://localhost:3000/api/user/email",{
+        let usersEmail = await fetch("/api/user/email",{
         method :"get",
       })
       let res = await usersEmail.json()   
@@ -191,7 +192,8 @@ export default function Header(props){
 
     const logOutEvent = async() => {
       console.log(getUserEmail[0].email)
-      let usersEmail = await fetch("http://localhost:3000/api/user/user-email",{
+      // let usersEmail = await fetch("http://localhost:3000/api/user/user-email",{
+        let usersEmail = await fetch("/api/user/user-email",{
         method :"DELETE",
         body : JSON.stringify({email:getUserEmail[0].email}),
         headers: {
