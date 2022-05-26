@@ -182,7 +182,7 @@ export default function Header(props){
         {
         position:"top-center",
         theme:"colored",
-        autoClose:4000,
+        autoClose:3000,
         pauseOnHover: true,
         closeButton:true,
         hideProgressBar :true, 

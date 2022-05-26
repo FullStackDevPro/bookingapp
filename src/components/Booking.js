@@ -92,11 +92,6 @@ class Booking extends Component{
                 {year : "2023",month : this.state.months},
             ]
         });
-
-        //get appointments from DB and restore the slot
-        // axios.get("http://localhost:3000/api/data")
-        // .then((res) => this.setState({getAppointments : res.data}))
-        // .catch(err => console.log(err))
     }
 
     errorDisplay = (errorValue)=>{
@@ -161,34 +156,6 @@ class Booking extends Component{
             }
         }
     }
-
-    // displayFullDate = (value) => {
-    //     const covertMonthToNum  = moment().month(`${value}`).format("M");  //return the number of month name
-    //     console.log("covertMonthToNum" , covertMonthToNum)
-    //     // const daysInMonth = new Date(this.state.selectdDate, covertMonthToNum , 0).getDate();
-    //     const daysInMonth = new Date(this.state.selectdDate, covertMonthToNum , 0).getDate();
-    //     console.log("daysInMonth", daysInMonth)
-    //     let remindDays = new Date().getDate();
-    //     console.log("remindDays", remindDays)
-    //     let leftDays = covertMonthToNum - covertMonthToNum ;
-    //     let listOfDaye = [];
-    //     for (let i = 1; i <= daysInMonth; i++) {
-    //         console.log("I is  : " ,i)
-    //         var d = new Date(this.state.selectdDate, covertMonthToNum - 1, i);
-    //         var dayName = this.state.days[d.getDay()];
-    //         if(dayName.indexOf(this.state.days[0]) !== -1 || dayName.indexOf(this.state.days[6]) !== -1){
-    //             listOfDaye.push(`---No appointments---`)
-    //         }else {
-    //             listOfDaye.push(this.state.selectdDate + "-"+ value + "-"+ i + '-' + dayName)
-    //             // console.log(this.state.selectdDate + "-"+ value + "-"+ i + '-' + dayName)
-    //         }
-    //     }
-    //     this.setState({fullDate : listOfDaye})
-    //     this.setState({check:true})
-    //     // console.log("the fullDays is : ",this.state.fullDate)
-    // }
-
-
     displayFullDate = (value) => {
         // console.log("value is  : " , value)
         const covertMonthToNum  = moment().month(`${value}`).format("M");  //return the number of month name

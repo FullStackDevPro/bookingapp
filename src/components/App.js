@@ -4,7 +4,6 @@ import {BrowserRouter,Route,Routes} from "react-router-dom"
 import eaysImage from "../assets/pexels-shane-aldendorff-1493112.jpg"
 import { makeStyles } from '@material-ui/core/styles';
 import { CssBaseline } from "@material-ui/core";
-import Home from "../HomePage/Home"
 import Header from "../HomePage/Header"
 import Login_signUp from "../HomePage/Form"
 import AboutUs from "../HomePage/AboutUs"
