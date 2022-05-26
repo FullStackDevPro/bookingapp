@@ -24,7 +24,7 @@ app.use(cors());
 app.use(logger('dev'))
 app.use(express.json());
 // app.use(express.static('public'));
-app.use("/myeyes" ,express.static("../dist"));
+app.use("/" ,express.static("../dist"));
 // Route Middleware
 app.use('/api/user', authRoute);
 
