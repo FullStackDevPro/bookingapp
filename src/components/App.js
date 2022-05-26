@@ -12,37 +12,23 @@ import FooterPart from "../HomePage/Footer"
 import ShowServices from "../HomePage/ShowServices";
 import MyPage from "../userPage/UserPage"
 import {Navigate,navigation} from "react-router-dom"
+import ContactUs from "../userPage/ContactForm"
+import Booking from "./Booking"
 
-// const useStyles = makeStyles((theme) => ({
-//     root :{
-//         // minHeight : "100vh",
-//         height: '100vh',
-//         backgroundImage: `url(${eaysImage})`,
-//         backgroundRepeat: 'no-repeat',
-//         backgroundSize: 'cover',
-//     }
-// }));
+function App(){
 
-function App(props){
-    // const classes = useStyles();
     const [checked,setChecked] = useState();
     const [user_email,setuser_email] = useState()
         return (  
-        <BrowserRouter >
-            {/* <Home/> */}
-            
+        <BrowserRouter >    
         <Routes>
             
             <Route path="/" element ={<div><CssBaseline/> <Header/> <Login_signUp/> <ShowServices/> <AboutUs/> <FooterPart/> </div>}></Route>
-            {/* <Route path="/" element ={<Login_signUp/>}></Route>
-            <Route path="/" element ={<ShowServices/>}></Route>
-            <Route path="/" element ={<AboutUs/>}></Route>
-            <Route path="/" element ={<FooterPart/>}></Route> */}
             <Route path="/userPage" element ={<MyPage  />}></Route> 
         </Routes>
         </BrowserRouter>
         // <div>
-        //     <MyPage/>
+        //     <Booking/>
         // </div>
         
     )

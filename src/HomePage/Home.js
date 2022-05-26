@@ -32,34 +32,12 @@ export default function Home({isOpen}){
     return ( 
         //< className={classes.root}>
     <div >
-        {/* {checked ?  <div> <CssBaseline/> <Header /> </div>  : <div> <MyPage user = {"Malek"}/> </div> } */}
-
-        {/* <BrowserRouter>
-        <Routes>
-        {checked == false ?                
-        
-            <Route path="/" element = {<div><CssBaseline/> <MyPage user = {"Malek"}/> </div>}>userPage</Route>
-          :         
-            <Route path="/" element = {<div><CssBaseline/> <Header/> </div>}>Home</Route>
-         }
-         </Routes>
-
-        </BrowserRouter> */}
-
-{/* 
-            {checked == false ?                
-            
-            <div><CssBaseline/> <MyPage user = {"Malek"}/> </div>
-                :         
-            <div><CssBaseline/> <Header/> </div>
-            } */}
-
-        <CssBaseline/> 
+        {/* <CssBaseline/> 
         <Header />
         <Login_signUp/>
         <ShowServices/>
         <AboutUs/>
-        <FooterPart/>
+        <FooterPart/> */}
         {/* <MyPage user = {"Malek"}/> */}
         {/* <Booking/> */}
     </div>

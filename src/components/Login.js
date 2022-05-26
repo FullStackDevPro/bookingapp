@@ -247,24 +247,8 @@ class Form extends React.Component {
     }
 
     render() {
-        // let page ;
-        // if(this.state.isLogedStatus){
-        //     return (    
-        //         <HomePage isOpen={false}/>
-        //     )
-        // }else{ 
-            // <BrowserRouter>
-            // <Routes>
-            //   <Route path="/userPage" element ={<MyPage user = {"lllll"}/>}></Route>
-            // </Routes> 
-            // </BrowserRouter>
-
       return (
           <div>
-              
-              {/* <Routes>
-              <Route path="/userPage" element ={<MyPage user = {"lllll"}/>}></Route>
-              </Routes> */}
               
         <div className="container">
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : 250}px, 0px)`}} className="form-div">

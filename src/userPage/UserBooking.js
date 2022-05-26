@@ -56,7 +56,7 @@ class showBookingUser extends Component {
         // this.getData();
         this.getEmailUser()
         // this.listOfData();
-     }, 2000)
+     }, 3000)
     }   
 
     componentWillUnmount() {

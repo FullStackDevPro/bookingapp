@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import "../style/ContactStyle.css"
 import emailjs from "emailjs-com"
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,6 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function ContactUs(){
+
+    const [checked,setChecked] = useState(false);
+    useEffect(()=> {
+        setChecked(true)
+        
+    },[])
 
     const DisplayOK = ()=>{
         toast.success(`Thanks for your message`,
@@ -46,7 +52,7 @@ export default function ContactUs(){
                         <p className="submit_wrapper"><input type="submit" value="Send"/></p>			
                     </form>
             </article>
-            <ToastContainer />
+            <ToastContainer style={{fontSize : "14px", width : "80%"}} />
         </section>
     )
 }

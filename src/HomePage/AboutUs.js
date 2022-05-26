@@ -22,15 +22,15 @@ export default function About2(){
                 <span className="name">Malek Hamad</span>
                 <span className="border"></span>
                 <p>
-                &#60; Designed pages, booking system, contact form,menu of options, deploying, Back-end /&#62; 
+                <p> &#60; Designer, Booking system, contact form, user page, deploying, Back-end, handle errors, footer, webPack /&#62;</p>  
                 </p>
             </div>
 
             <div className="section" id="p2">
-                <span className="name">Mohammad</span>
+                <span className="name">Mohammad Horani</span>
                 <span className="border"></span>
                 <p>
-                &#60; Back-end, connection to database, create booking table, users table /&#62;
+                &#60; Back-end, connection to database, booking table, users table, API, fixed server, deploying /&#62;
                 </p>
             </div>
 
@@ -38,7 +38,7 @@ export default function About2(){
                 <span className="name">Islam</span>
                 <span className="border"></span>
                 <p>
-                &#60; LogIn form,Register Form, data validation, Home page /&#62;
+                &#60; LogIn validation ,Register Form and validation, data validation, Home page,  /&#62;
                 </p>
             </div>
 
@@ -46,7 +46,7 @@ export default function About2(){
                 <span className="name">Ismail</span>
                 <span className="border"></span>
                 <p>
-                &#60; Home Page, styling of showing About us page, adding features,back-end /&#62;
+                &#60; Home Page, About us part, adding features, back-end, events/&#62;
                 </p>
             </div>
 

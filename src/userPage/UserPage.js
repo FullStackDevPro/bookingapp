@@ -117,6 +117,8 @@ export default function Header(props){
     useEffect(()=> {
         setChecked(true)
         get_email()
+        disPlayMessageWelcome()
+        
     },[])
 
     const handleClose = (e) => {
@@ -163,7 +165,7 @@ export default function Header(props){
     
     }
 
-    const message = ()=>{
+    const disPlayMessage = ()=>{
       toast.info("Thanks for your visit and See you soon",
           {
           position:"top-center",
@@ -175,6 +177,18 @@ export default function Header(props){
       })
   }
 
+  const disPlayMessageWelcome = ()=>{
+    toast.info("Welcome to your page",
+        {
+        position:"top-center",
+        theme:"colored",
+        autoClose:4000,
+        pauseOnHover: true,
+        closeButton:true,
+        hideProgressBar :true, 
+    })
+}
+
     const logOutEvent = async() => {
       console.log(getUserEmail[0].email)
       let usersEmail = await fetch("http://localhost:3000/api/user/user-email",{
@@ -184,11 +198,11 @@ export default function Header(props){
           'Content-Type':'application/json',
         },
       })
+      
       let res = await usersEmail.json()    
       console.log(res)
-      message()
+      disPlayMessage()
       route("/")
-      
     }
   
     const handleClick = (event) => {
@@ -255,7 +269,7 @@ export default function Header(props){
               {/* {changePassword==false ? <ContactUs/> : null} */}
                 {/* {booking ? <ContactUs/> : <Booking/> } */}
             </div>
-            {/* <ToastContainer  style={{fontSize : "14px", width : "80%"}}/> */}
+            <ToastContainer  style={{fontSize : "14px", width : "80%"}}/>
         </div>
         </Collapse>
     )

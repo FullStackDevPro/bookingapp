@@ -152,10 +152,6 @@ export default function Header({state}){
             </Collapse>
         </div>
         </Collapse>
-        {/* <LogInPage/> 
-        <ShowServices/>
-        <About2/>
-        <FooterPart/> */}
         </div>
     )
 }

@@ -21,7 +21,8 @@ const authRoute = require('./routes/auth');
 app.use(cors());
 app.use(logger('dev'))
 app.use(express.json());
-app.use(express.static('public'));
+// app.use(express.static('public'));
+app.use("/myeyes" ,express.static("../dist"));
 // Route Middleware
 app.use('/api/user', authRoute);
 
