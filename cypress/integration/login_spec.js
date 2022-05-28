@@ -1,4 +1,4 @@
-describe('Input form', () => {
+describe('Tests input to form', () => {
     beforeEach(() =>{
         cy.visit('/')
     })
