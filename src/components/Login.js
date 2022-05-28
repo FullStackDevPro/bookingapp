@@ -255,8 +255,8 @@ class Form extends React.Component {
         <div className="container">
           <div style={{transform: `translate(${this.state.form === 'login' ? 0 : 250}px, 0px)`}} className="form-div">
             <form onSubmit={this.onSubmit.bind(this)}>
-              <input placeholder="Email" type="text"  value={this.state.email} onChange = {this.getUserEmail.bind(this)}/>
-              <input placeholder="Password" type="password"  value={this.state.passWord} onChange={this.getUserPassword.bind(this)}/>
+              <input autoFocus className="emailinputtest" placeholder="Email" type="text"  value={this.state.email} onChange = {this.getUserEmail.bind(this)}/>
+              <input className="passwordinputtest" placeholder="Password" type="password"  value={this.state.passWord} onChange={this.getUserPassword.bind(this)}/>
               {this.state.form === 'login' ? '': <input placeholder="Name" type="text"  value={this.state.nameOfUser} onChange={this.getUserName.bind(this)}/>}
               {/* <button className="button-primary">Submit</button> */}
               {this.state.form === 'login' ? <button className="button-primary">Log In</button> : <button className="button-primary">Sign Up</button> }

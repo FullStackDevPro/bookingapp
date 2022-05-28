@@ -1,5 +1,5 @@
 {
-    "baseUrl":"https://myeyes-app.herokuapp.com/",
+    "baseUrl":"http://localhost:8080",
     "experimentalStudio":true
 }
 
